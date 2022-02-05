@@ -3,7 +3,7 @@ import { getAllProducts } from "../lib/shopify";
 export default function ProductListing({ products }) {
 	return (
 		<div>
-			<h2>Listing</h2>
+			<h2>Product Listing</h2>
 			<div>
 				{products.map((product) => (
 					<div key={product.node.id}>
