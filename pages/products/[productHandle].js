@@ -1,24 +1,21 @@
-// import getProductByHandle from "../../lib/getProductByHandle";
+import getProductByHandle from "../../lib/getProductByHandle";
 import { getAllProducts } from "../../lib/shopify";
 
 function Product({ productData }) {
 	return (
 		<>
 			<h1>Product Page</h1>
-			{/* <h2>{{ title }}</h2> */}
+			<h2>{productData.title}</h2>
 		</>
 	);
 }
 
 export async function getStaticPaths() {
 	const productPaths = await getAllProducts().then((data) => {
-		console.log("products", data);
-
 		return data.map((item) => {
-			console.log("item", item);
 			return {
 				params: {
-					productID: item.node.handle,
+					productHandle: item.node.handle,
 				},
 			};
 		});
@@ -32,12 +29,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+	const productData = await getProductByHandle(context.params.productHandle);
+
 	return {
-		props: {
-			productData: {
-				title: "the title",
-			},
-		}, // will be passed to the page component as props
+		props: { productData },
 	};
 }
 

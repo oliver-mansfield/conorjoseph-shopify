@@ -17,7 +17,6 @@ export default function ProductListing({ products }) {
 
 export async function getStaticProps() {
 	const products = await getAllProducts();
-	// console.log(products);
 
 	return {
 		props: { products }, // will be passed to the page component as props
