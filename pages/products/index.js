@@ -1,4 +1,4 @@
-import { getAllProducts } from "../lib/shopify";
+import { getAllProducts } from "../../lib/shopify";
 
 export default function ProductListing({ products }) {
 	return (
@@ -17,7 +17,7 @@ export default function ProductListing({ products }) {
 
 export async function getStaticProps() {
 	const products = await getAllProducts();
-	console.log(products);
+	// console.log(products);
 
 	return {
 		props: { products }, // will be passed to the page component as props
