@@ -10,19 +10,20 @@ function Product({ productData }) {
 	);
 }
 
+//Generate each product page at build time
+//Return an object eg [{ params: { productHandle: "ring-one" } }, { params: { productHandle: "ring-two" } }],
 export async function getStaticPaths() {
-	const productPaths = await getAllProducts().then((data) => {
-		return data.map((item) => {
+	const productPaths = await getAllProducts().then((res) => {
+		return res.map((product) => {
 			return {
 				params: {
-					productHandle: item.node.handle,
+					productHandle: product.node.handle,
 				},
 			};
 		});
 	});
 
 	return {
-		// paths: [{ params: { productID: "1" } }, { params: { productID: "2" } }],
 		paths: productPaths,
 		fallback: false,
 	};

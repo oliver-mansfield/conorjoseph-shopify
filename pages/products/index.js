@@ -1,4 +1,5 @@
 import { getAllProducts } from "../../lib/shopify";
+import Link from "next/link";
 
 export default function ProductListing({ products }) {
 	return (
@@ -7,7 +8,9 @@ export default function ProductListing({ products }) {
 			<div>
 				{products.map((product) => (
 					<div key={product.node.id}>
-						<p>{product.node.title}</p>
+						<Link href={`/products/${product.node.handle}`}>
+							{product.node.title}
+						</Link>
 					</div>
 				))}
 			</div>
