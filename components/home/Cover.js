@@ -1,42 +1,31 @@
-import Image from "next/image";
+// import Image from "next/image";
+import styles from "./Cover.module.scss";
 
 function Cover() {
 	return (
 		<>
-			<div className="cover">
-				<div className="cover-image girl">
+			<div className={styles.cover}>
+				{/* <div className="cover-image girl">
 					<Image src="/images/girl.png" layout="fill" objectFit="cover" />
 				</div>
 				<div className="cover-image guy">
-					{/* <Image src="/images/guy.png" width="631" height="976" /> */}
+					<Image src="/images/guy.png" width="631" height="976" />
+				</div> */}
+				<img
+					src="/images/guy.png"
+					className={` ${styles.cover__image} ${styles.cover__image_guy} `}
+				/>
+				<div className={styles.titleContainer}>
+					<div className={` ${styles.titleContainer__inner}  `}>
+						<h1>Second</h1>
+						<h1>Skin</h1>
+					</div>
 				</div>
+				<img
+					src="/images/girl.png"
+					className={` ${styles.cover__image} ${styles.cover__image_girl} `}
+				/>
 			</div>
-
-			<style jsx scss>
-				{`
-					.cover {
-						height: 100vh;
-						width: 100%;
-						background: linear-gradient(45deg, #312c28 0%, #615851 100%);
-						position: relative;
-					}
-
-					.cover-image {
-						position: absolute;
-						bottom: 0;
-						height: 100%;
-						max-width: 500px;
-					}
-
-					.guy {
-						right: 0;
-					}
-
-					.girl {
-						left: 0;
-					}
-				`}
-			</style>
 		</>
 	);
 }
