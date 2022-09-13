@@ -1,11 +1,19 @@
 import getProductByHandle from "../../lib/getProductByHandle";
-import { getAllProducts } from "../../lib/shopify";
+import {getAllProducts} from "../../lib/shopify";
+import Image from "next/image";
 
-function Product({ productData }) {
+function Product({productData}) {
 	return (
 		<>
 			<h1>Product Page</h1>
 			<h2>{productData.title}</h2>
+			{/* <p>{productData.node.images.edges[0].node.originalSrc}</p> */}
+			{/* <Image
+				src={productData.node.images.edges[0].node.originalSrc}
+				alt={productData.node.images.edges[0].node.altText}
+				height="100"
+				width="200"
+			/> */}
 		</>
 	);
 }
@@ -33,7 +41,7 @@ export async function getStaticProps(context) {
 	const productData = await getProductByHandle(context.params.productHandle);
 
 	return {
-		props: { productData },
+		props: {productData},
 	};
 }
 

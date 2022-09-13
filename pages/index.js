@@ -2,9 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-import Cover from "../components/home/Cover";
+import {getAllProducts} from "../lib/shopify";
 
-export default function Home() {
+import Cover from "../components/home/Cover";
+import Intro from "../components/home/Intro";
+import ProductList from "../components/ProductList";
+
+export default function Home({products}) {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -14,6 +18,16 @@ export default function Home() {
 			</Head>
 
 			<Cover />
+			<Intro />
+			<ProductList products={products} />
 		</div>
 	);
+}
+
+export async function getStaticProps() {
+	const products = await getAllProducts();
+
+	return {
+		props: {products}, // will be passed to the page component as props
+	};
 }

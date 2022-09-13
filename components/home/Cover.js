@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import styles from "./Cover.module.scss";
 
-function Cover() {
+const Cover = () => {
 	return (
 		<>
 			<div className={styles.cover}>
@@ -28,6 +28,6 @@ function Cover() {
 			</div>
 		</>
 	);
-}
+};
 
 export default Cover;
