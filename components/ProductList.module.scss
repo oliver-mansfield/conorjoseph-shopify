@@ -1,0 +1,8 @@
+@import "../styles/variables/main.scss";
+
+.productlist {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	max-width: $containerWidth;
+	background-color: $colour-gold;
+}
