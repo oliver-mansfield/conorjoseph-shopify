@@ -5,10 +5,17 @@ module.exports = {
 		"./components/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
-		colors: {
-			gold: "#E3CFB4",
+		extend: {
+			colors: {
+				gold: "#E3CFB4",
+			},
+			fontFamily: {
+				serif: ["Libre Baskerville", "serif"],
+			},
 		},
-		extend: {},
+		container: {
+			center: true,
+		},
 	},
 	plugins: [],
 };
