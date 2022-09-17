@@ -1,7 +1,7 @@
-import getProductByHandle from "../../lib/getProductByHandle";
-import {getAllProducts} from "../../lib/shopify";
+import getProductByHandle from "lib/getProductByHandle";
+import {getAllProducts} from "lib/shopify";
 import Image from "next/image";
-import AddToCartButton from "../../components/product-page/addToCartButton";
+import AddToCartButton from "components/product-page/addToCartButton";
 
 function Product({productData}) {
 	return (
