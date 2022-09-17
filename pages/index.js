@@ -16,8 +16,8 @@ export default function Home({products}) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Cover />
-			<Intro />
+			{/* <Cover /> */}
+			{/* <Intro /> */}
 			<ProductList products={products} />
 		</div>
 	);
