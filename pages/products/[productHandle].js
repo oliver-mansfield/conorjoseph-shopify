@@ -2,6 +2,7 @@ import getProductByHandle from "lib/getProductByHandle";
 import {getAllProducts} from "lib/shopify";
 import Image from "next/image";
 import AddToCartButton from "components/product-page/AddToCartButton";
+import {motion, useAnimation} from "framer-motion";
 
 function Product({productData}) {
 	return (
@@ -15,6 +16,10 @@ function Product({productData}) {
 				height="100"
 				width="200"
 			/> */}
+			<motion.img
+				src={productData.images.edges[0].node.url}
+				layoutId={productData.title}
+			/>
 			<AddToCartButton />
 		</>
 	);
