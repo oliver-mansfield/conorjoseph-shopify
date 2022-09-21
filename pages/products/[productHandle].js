@@ -16,10 +16,7 @@ function Product({productData}) {
 				height="100"
 				width="200"
 			/> */}
-			<motion.img
-				src={productData.images.edges[0].node.url}
-				layoutId={productData.title}
-			/>
+			<img src={productData.images.edges[0].node.url} />
 			<AddToCartButton />
 		</>
 	);
