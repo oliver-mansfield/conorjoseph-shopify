@@ -5,14 +5,13 @@ import Link from "next/link";
 
 const ProductListItem = (product) => {
 	return (
-		<>
-			<Link href={`/products/${product.product.node.handle}`}>
-				<div className="relative">
-					<div className="absolute bottom-0 left-0">
-						<h2>{product.product.node.title}</h2>
-						<p>£8400</p>
-					</div>
-					{/* <Image
+		<Link href={`/products/${product.product.node.handle}`}>
+			<div className="relative">
+				<div className="absolute bottom-0 left-1/4">
+					<h2>{product.product.node.title}</h2>
+					<p>£{product.product.node.priceRange.minVariantPrice.amount}</p>
+				</div>
+				{/* <Image
 						src={product.product.node.images.edges[0].node.originalSrc}
 						alt={product.product.node.images.edges[0].node.altText}
 						width="100%"
@@ -20,13 +19,12 @@ const ProductListItem = (product) => {
 						layout="responsive"
 						objectFit="contain"
 					/> */}
-					<img
-						src={product.product.node.images.edges[0].node.originalSrc}
-						// whileHover={{scale: 1.1}}
-					/>
-				</div>
-			</Link>
-		</>
+				<img
+					src={product.product.node.images.edges[0].node.originalSrc}
+					// whileHover={{scale: 1.1}}
+				/>
+			</div>
+		</Link>
 	);
 };
 

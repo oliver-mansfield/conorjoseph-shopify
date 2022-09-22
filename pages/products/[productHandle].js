@@ -1,23 +1,24 @@
 import getProductByHandle from "lib/getProductByHandle";
 import {getAllProducts} from "lib/shopify";
-import Image from "next/image";
-import AddToCartButton from "components/product-page/AddToCartButton";
-import {motion, useAnimation} from "framer-motion";
+// import Image from "next/image";
+import ProductDetails from "components/product-page/ProductDetails";
+// import {motion, useAnimation} from "framer-motion";
 
 function Product({productData}) {
 	return (
 		<>
-			<h1>Product Page</h1>
-			<h2>{productData.title}</h2>
-			{/* <p>{productData.node.images.edges[0].node.originalSrc}</p> */}
-			{/* <Image
-				src={productData.node.images.edges[0].node.originalSrc}
-				alt={productData.node.images.edges[0].node.altText}
-				height="100"
-				width="200"
-			/> */}
-			<img src={productData.images.edges[0].node.url} />
-			<AddToCartButton />
+			<div className="relative">
+				<div className="absolute z-10 w-full">
+					<div className="max-w-5xl mx-auto">
+						<img src={productData.images.edges[0].node.url} />
+					</div>
+				</div>
+				<div className="absolute z-20 w-full">
+					<div className="container">
+						<ProductDetails productData={productData} />
+					</div>
+				</div>
+			</div>
 		</>
 	);
 }
