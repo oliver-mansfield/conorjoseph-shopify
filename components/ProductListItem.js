@@ -1,6 +1,6 @@
 import Link from "next/link";
 // import { useRouter } from "next/router";
-// import {motion, useAnimation} from "framer-motion";
+import {motion, useAnimation} from "framer-motion";
 // import Image from "next/image";
 
 const ProductListItem = (product) => {
@@ -19,9 +19,11 @@ const ProductListItem = (product) => {
 						layout="responsive"
 						objectFit="contain"
 					/> */}
-				<img
+				<motion.img
 					src={product.product.node.images.edges[0].node.originalSrc}
-					// whileHover={{scale: 1.1}}
+					initial={{opacity: 0}}
+					animate={{opacity: 1}}
+					transition={{ease: "easeOut", duration: 2}}
 				/>
 			</div>
 		</Link>

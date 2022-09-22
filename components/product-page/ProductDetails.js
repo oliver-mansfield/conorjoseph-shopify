@@ -1,12 +1,12 @@
 import AddToCartButton from "components/product-page/AddToCartButton";
 
-const ProductDetails = (productData) => {
+const ProductDetails = ({productData}) => {
 	return (
-		<>
-			<h2>{productData.productData.title}</h2>
-
+		<div className="max-w-xs">
+			<h2>{productData.title}</h2>
+			<p>{productData.description}</p>
 			<AddToCartButton />
-		</>
+		</div>
 	);
 };
 
