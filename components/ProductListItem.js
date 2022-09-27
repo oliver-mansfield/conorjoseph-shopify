@@ -5,9 +5,13 @@ import {motion, useAnimation} from "framer-motion";
 
 const ProductListItem = (product) => {
 	return (
-		<Link href={`/products/${product.product.node.handle}`}>
+		<Link
+			href={`/products/${product.product.node.handle}`}
+			className="cursor-pointer"
+		>
 			<div className="relative">
-				<div className="absolute bottom-0 left-1/4">
+				<img src={product.product.node.images.edges[0].node.originalSrc} />
+				<div className="mt-[-5rem] text-center">
 					<h2>{product.product.node.title}</h2>
 					<p>£{product.product.node.priceRange.minVariantPrice.amount}</p>
 				</div>
@@ -19,12 +23,6 @@ const ProductListItem = (product) => {
 						layout="responsive"
 						objectFit="contain"
 					/> */}
-				<motion.img
-					src={product.product.node.images.edges[0].node.originalSrc}
-					initial={{opacity: 0}}
-					animate={{opacity: 1}}
-					transition={{ease: "easeOut", duration: 2}}
-				/>
 			</div>
 		</Link>
 	);

@@ -3,7 +3,6 @@
 const AddToCartButton = () => {
 	return (
 		<>
-			<p>Oliver lol</p>
 			<button>Add to cartsdaf ok</button>
 		</>
 	);
