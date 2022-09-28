@@ -11,8 +11,8 @@ const ProductListItem = (product) => {
 		>
 			<div className="relative">
 				<img src={product.product.node.images.edges[0].node.originalSrc} />
-				<div className="mt-[-5rem] text-center">
-					<h2>{product.product.node.title}</h2>
+				<div className="mt-[-5rem] text-center perspective-container">
+					<h2 className="perspective-text">{product.product.node.title}</h2>
 					<p>£{product.product.node.priceRange.minVariantPrice.amount}</p>
 				</div>
 				{/* <Image

@@ -30,3 +30,12 @@
 		@apply text-2xl;
 	}
 }
+
+.perspective-container {
+	perspective: 300px;
+}
+
+.perspective-text {
+	transform: rotateX(0deg) rotateY(21deg);
+	transform-style: preserve-3d;
+}
