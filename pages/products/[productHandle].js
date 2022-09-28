@@ -1,5 +1,5 @@
 import getProductByHandle from "lib/getProductByHandle";
-import {getAllProducts} from "lib/shopify";
+import getAllProducts from "lib/getAllProducts";
 // import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";

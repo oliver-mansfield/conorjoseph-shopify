@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import {getAllProducts} from "../lib/shopify";
+import getAllProducts from "lib/getAllProducts";
 
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";

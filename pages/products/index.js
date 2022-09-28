@@ -1,4 +1,4 @@
-import {getAllProducts} from "lib/shopify";
+import getAllProducts from "lib/getAllProducts";
 import Link from "next/link";
 
 export default function ProductListing({products}) {
