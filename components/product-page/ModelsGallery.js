@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const ModelsGallery = ({productData}) => {
 	const modelImages = productData.images.edges.slice(1);
-
+	console.log(modelImages);
 	return (
-		<div className="relative w-sm">
+		<div className="max-w-md">
 			{modelImages.map((item, index) => {
 				return (
 					<Image
