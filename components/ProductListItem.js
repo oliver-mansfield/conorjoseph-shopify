@@ -10,10 +10,22 @@ const ProductListItem = (product) => {
 			className="cursor-pointer"
 		>
 			<div className="relative">
-				<img src={product.product.node.images.edges[0].node.originalSrc} />
-				<div className="mt-[-5rem] text-center perspective-container">
-					<h2 className="perspective-text">{product.product.node.title}</h2>
-					<p>£{product.product.node.priceRange.minVariantPrice.amount}</p>
+				<motion.img
+					src={product.product.node.images.edges[0].node.originalSrc}
+					initial={{opacity: 0}}
+					animate={{opacity: 1}}
+					transition={{ease: "easeOut", duration: 1}}
+				/>
+				<div className="mt-[-3rem] text-center perspective-container">
+					<motion.h2
+						className="perspective-text"
+						initial={{opacity: 0}}
+						animate={{opacity: 1}}
+						transition={{ease: "easeOut", duration: 5}}
+					>
+						{product.product.node.title}
+					</motion.h2>
+					{/* <p>£{product.product.node.priceRange.minVariantPrice.amount}</p> */}
 				</div>
 				{/* <Image
 						src={product.product.node.images.edges[0].node.originalSrc}

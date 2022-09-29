@@ -1,6 +1,6 @@
 import getProductByHandle from "lib/getProductByHandle";
 import getAllProducts from "lib/getAllProducts";
-// import Image from "next/image";
+import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";
 import {motion, useAnimation} from "framer-motion";
@@ -10,12 +10,12 @@ function Product({productData}) {
 		<div>
 			<div className="relative">
 				<div className="md:relative z-10 w-full">
-					<div className="max-w-5xl mx-auto">
-						<motion.img
+					<div className="max-w-5xl max-h-2xl mx-auto">
+						<Image
 							src={productData.images.edges[0].node.url}
-							initial={{opacity: 0}}
-							animate={{opacity: 1}}
-							transition={{ease: "easeOut", duration: 2}}
+							width="1400"
+							height="750"
+							layout="responsive"
 						/>
 					</div>
 				</div>
@@ -25,7 +25,6 @@ function Product({productData}) {
 					</div>
 				</div>
 			</div>
-
 			<ModelsGallery productData={productData} />
 		</div>
 	);
