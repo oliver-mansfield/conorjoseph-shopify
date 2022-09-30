@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 
 @layer base {
 	html {
 		@apply bg-black;
 	}
 
-	p,
-	span,
 	h1,
 	h2,
 	h3,
@@ -28,6 +26,12 @@
 
 	h3 {
 		@apply text-2xl;
+	}
+
+	p,
+	a,
+	span {
+		@apply text-white font-sansSerif font-normal leading-7;
 	}
 }
 

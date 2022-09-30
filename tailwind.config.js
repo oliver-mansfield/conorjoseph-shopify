@@ -11,6 +11,7 @@ module.exports = {
 			},
 			fontFamily: {
 				serif: ["Libre Baskerville", "serif"],
+				sansSerif: ["Roboto", "sans-serif"],
 			},
 		},
 		container: {

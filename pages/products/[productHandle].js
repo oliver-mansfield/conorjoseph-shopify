@@ -8,19 +8,17 @@ import {motion, useAnimation} from "framer-motion";
 function Product({productData}) {
 	return (
 		<div>
-			<div className="relative">
-				<div className="md:relative z-10 w-full">
-					<div className="max-w-5xl max-h-2xl mx-auto">
-						<Image
-							src={productData.images.edges[0].node.url}
-							width="1400"
-							height="750"
-							layout="responsive"
-						/>
-					</div>
+			<div className="md:relative z-10 overflow-hidden w-full">
+				<div className="md:max-w-5xl mx-auto">
+					<Image
+						src={productData.images.edges[0].node.url}
+						width="1400"
+						height="750"
+						layout="responsive"
+					/>
 				</div>
 				<div className="md:absolute z-20 w-full top-1/2">
-					<div className="container flex items-center">
+					<div className="container flex items-center justify-around md:justify-start">
 						<ProductDetails productData={productData} />
 					</div>
 				</div>
