@@ -1,9 +1,31 @@
-// import styles from "./AddToCartButton.module.scss";
+import {useContext} from "react";
+import CartContext from "contexts/CartContext";
 
-const AddToCartButton = () => {
+const AddToCartButton = ({productData}) => {
+	//Update Cart context from here
+	//Add the handle of the product
+	//Cart.js renders the updated context
+
+	const cartContext = useContext(CartContext);
+
+	// const handleUpdateCartContext = (productData) => {
+	// 	// console.log("click" + productData.handle);
+	// 	// const {cartState, setCartState} = useContext(CartContextProvider);
+	// 	// setCartState([
+	// 	// 	{
+	// 	// 		handle: "Fake ring ok",
+	// 	// 	},
+	// 	// 	{
+	// 	// 		handle: "Fake ring 2",
+	// 	// 	},
+	// 	// ]);
+	// };
+
 	return (
 		<>
-			<button>Add to cartsdaf ok</button>
+			<button onClick={() => cartContext.addProductToCart(productData)}>
+				Add {productData.handle} to cart
+			</button>
 		</>
 	);
 };

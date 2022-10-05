@@ -1,5 +1,5 @@
-import AddToCartButton from "components/product-page/AddToCartButton";
 import formatPrice from "lib/formatPrice";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductDetails = ({productData}) => {
 	return (
@@ -8,8 +8,11 @@ const ProductDetails = ({productData}) => {
 			<h3 className="text-center text-2xl mb-6">
 				{formatPrice(productData.priceRange.minVariantPrice.amount)}
 			</h3>
-			<p>{productData.description}</p>
-			<AddToCartButton />
+			<p className="text-justify">{productData.description}</p>
+
+			<div className="mt-4 mx-auto">
+				<AddToCartButton productData={productData} />
+			</div>
 		</div>
 	);
 };

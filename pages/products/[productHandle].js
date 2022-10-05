@@ -8,7 +8,7 @@ import {motion, useAnimation} from "framer-motion";
 function Product({productData}) {
 	return (
 		<div>
-			<div className="md:relative z-10 overflow-hidden w-full">
+			<div className="md:relative z-10 w-full">
 				<div className="md:max-w-5xl mx-auto">
 					<Image
 						src={productData.images.edges[0].node.url}
@@ -23,7 +23,7 @@ function Product({productData}) {
 					</div>
 				</div>
 			</div>
-			<ModelsGallery productData={productData} />
+			{/* <ModelsGallery productData={productData} /> */}
 		</div>
 	);
 }
