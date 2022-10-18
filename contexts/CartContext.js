@@ -1,38 +1,46 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useState, useEffect} from "react";
 
 const CartContext = createContext();
 
-// let rings = [
-// 	{
-// 		handle: "Fake ring",
-// 	},
-// 	{
-// 		handle: "Fake ring 2",
-// 	},
-// ];
+// const getInitialState = () => {
+// 	const cart = localStorage.getItem("cart");
+// 	return cart ? JSON.parse(cart) : [];
+// };
 
 export function CartContextProvider({children}) {
 	const [cartState, setCartState] = useState([]);
+	const [cartShown, setCartShown] = useState(false);
 
 	const addProductToCart = (product) => {
 		setCartState([...cartState, product]);
 	};
 
+	// useEffect(() => {
+	// 	setCartState(localStorage.getItem("cart"));
+	// }, []);
+
+	//Check for localStorage on load
+	//Set ProviderState to value of localStorage
+
+	//Upon update of ProviderSate, set localStorage
+
+	//On page load
+	// useEffect(() => {
+	// 	setCartState(localStorage.getItem("cart"));
+	// }, []);
+
+	//On cart update
+	// useEffect(() => {
+	// 	localStorage.setItem("cart", JSON.stringify(cartState));
+	// }, [cartState]);
+
 	return (
-		<CartContext.Provider value={{cartState, addProductToCart}}>
+		<CartContext.Provider
+			value={{cartState, cartShown, setCartShown, addProductToCart}}
+		>
 			{children}
 		</CartContext.Provider>
 	);
 }
 
 export default CartContext;
-
-// export function updateCartContext(data) {
-// 	console.log("updated");
-// 	setCartState([...cartState, data]);
-// }
-
-//Is this wrapper needed or can I just call useContext(CartContext) on a page?
-// export function useCartContext() {
-// 	return useContext(CartContext);
-// }

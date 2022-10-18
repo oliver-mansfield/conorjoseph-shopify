@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Cart from "components/Cart";
 
 const Header = () => {
 	return (
@@ -9,6 +10,7 @@ const Header = () => {
 				</div>
 			</Link>
 			<p>Cart</p>
+			<Cart />
 		</header>
 	);
 };

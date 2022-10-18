@@ -1,41 +1,37 @@
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import CartContext from "contexts/CartContext";
 
 const Cart = () => {
 	const cartContext = useContext(CartContext);
-
-	useEffect(() => {
-		console.log(cartContext.cartState);
-	}, []);
-
 	const cartProducts = cartContext.cartState;
-	// const [cartProducts, setCartProducts] = useState([]);
 
-	// const add = () => {
-	// 	const newProd = {
-	// 		handle: "ring-one",
-	// 	};
-	// 	const updatedProductList = [...cartProducts, newProd];
+	// showCart = () => {
 
-	// 	setCartProducts(updatedProductList);
-	// };
+	// }
 
-	// let cartProducts = [
-	// 	{
-	// 		handle: "Fake ring",
-	// 	},
-	// 	{
-	// 		handle: "Fake ring 2",
-	// 	},
-	// ];
+	const hideCart = () => {
+		cartContext.setCartShown(false);
+	};
+
+	// useEffect(() => {
+
+	// }, [cartState])
 
 	return (
-		<div>
-			{cartProducts.map((product, index) => {
-				return <p>{product.title}</p>;
-			})}
-			<p>{cartContext.cartState.length}</p>
-		</div>
+		<>
+			{cartContext.cartShown && (
+				<div className="fixed top-9 right-0 bg-gold p-5">
+					<p onClick={hideCart}>Close</p>
+					<div>
+						{cartProducts.map((product, index) => {
+							return <p key={index}>{product.title}</p>;
+						})}
+						<p>{cartContext.cartState.length}</p>
+					</div>
+					<button>Checkout</button>
+				</div>
+			)}
+		</>
 	);
 };
 

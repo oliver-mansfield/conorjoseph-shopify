@@ -23,7 +23,12 @@ const AddToCartButton = ({productData}) => {
 
 	return (
 		<>
-			<button onClick={() => cartContext.addProductToCart(productData)}>
+			<button
+				onClick={() => {
+					cartContext.addProductToCart(productData);
+					cartContext.setCartShown(true);
+				}}
+			>
 				Add {productData.handle} to cart
 			</button>
 		</>

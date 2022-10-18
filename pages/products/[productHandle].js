@@ -3,7 +3,6 @@ import getAllProducts from "lib/getAllProducts";
 import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";
-import {motion, useAnimation} from "framer-motion";
 
 function Product({productData}) {
 	return (
