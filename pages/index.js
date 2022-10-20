@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 import getAllProducts from "lib/getAllProducts";
-
+import Splash from "components/home/Splash";
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import ProductList from "../components/ProductList";
@@ -19,6 +19,7 @@ export default function Home({products}) {
 			{/* <Cover /> */}
 			{/* <Intro /> */}
 			<ProductList products={products} />
+			<Splash />
 		</div>
 	);
 }

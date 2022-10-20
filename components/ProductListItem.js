@@ -1,55 +1,53 @@
 import Link from "next/link";
+import {useRef, useEffect} from "react";
 import {gsap} from "gsap";
-import {useRef, useEffect, forwardRef, useImperativeHandle} from "react";
-// import { useRouter } from "next/router";
-// import Image from "next/image";
+import Flip from "gsap/dist/Flip";
 
-const ProductListItem = forwardRef(({product, index}, ref) => {
-	// const prodRefs = useRef([]);
+gsap.registerPlugin(Flip);
 
-	// const prodImageRef = useRef(null);
-	// const prodTitleRef = useRef(null);
+const ProductListItem = ({product}) => {
+	const imageRef = useRef(null);
 
-	useImperativeHandle(ref, () => ({
-		showAlert() {
-			console.log(`Hello from Child Component${index}`);
-		},
-	}));
+	const handleClick = () => {
+		const url = `/products/${product.node.handle}`;
+		//Fade out all other menu items
+		//Fade out clicked item title
+		//Enlarge clicked item image
+		//Route to product page
 
-	// const myRef = useRef(null);
+		const splash = document.querySelector(".splash");
 
-	// useEffect(() => {
-	// 	console.log("go");
-	// 	gsap.from(myRef.current, {
-	// 		autoAlpha: 0,
-	// 		ease: "none",
-	// 	});
-	// }, []);
+		//Get current position of image on page
+		const flipState = Flip.getState(imageRef.current);
+
+		console.log(splash);
+
+		//Move image to final position, eg full screen
+		splash.appendChild(imageRef.current);
+
+		Flip.from(flipState, {
+			duration: 1,
+			ease: "power1.inOut",
+			absolute: true,
+			// onComplete: myFunc,
+		});
+	};
 
 	return (
-		<Link href={`/products/${product.node.handle}`} className="cursor-pointer">
+		<button onClick={handleClick} className="cursor-pointer">
 			<div>
 				<img
 					src={product.node.images.edges[0].node.originalSrc}
-					// ref={(el) => (prodRefs.current[domRef] = el)}
-					// ref={myRef}
+					ref={imageRef}
 				/>
 
 				<div className="mt-[-3rem] text-center perspective-container">
 					<h2 className="perspective-text">{product.node.title}</h2>
-					{/* <p>£{product.product.node.priceRange.minVariantPrice.amount}</p> */}
+					{/* <p>£{product.node.priceRange.minVariantPrice.amount}</p> */}
 				</div>
-				{/* <Image
-						src={product.product.node.images.edges[0].node.originalSrc}
-						alt={product.product.node.images.edges[0].node.altText}
-						width="100%"
-						height="100%"
-						layout="responsive"
-						objectFit="contain"
-					/> */}
 			</div>
-		</Link>
+		</button>
 	);
-});
+};
 
 export default ProductListItem;

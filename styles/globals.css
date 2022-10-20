@@ -34,7 +34,7 @@
 		@apply text-white font-sansSerif font-normal leading-7;
 	}
 
-	button {
+	.button {
 		@apply bg-gold px-8 py-2 uppercase;
 	}
 }

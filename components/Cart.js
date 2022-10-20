@@ -28,7 +28,7 @@ const Cart = () => {
 						})}
 						<p>{cartContext.cartState.length}</p>
 					</div>
-					<button>Checkout</button>
+					<button className="button">Checkout</button>
 				</div>
 			)}
 		</>

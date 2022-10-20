@@ -24,6 +24,7 @@ const AddToCartButton = ({productData}) => {
 	return (
 		<>
 			<button
+				className="button"
 				onClick={() => {
 					cartContext.addProductToCart(productData);
 					cartContext.setCartShown(true);
