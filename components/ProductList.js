@@ -1,6 +1,7 @@
 import ProductListItem from "./ProductListItem";
 import {useRef, useState} from "react";
 import gsap from "gsap/dist/all";
+import Flip from "gsap/dist/Flip";
 
 const ProductList = ({products}) => {
 	const productItemsRef = useRef([]);
@@ -18,14 +19,29 @@ const ProductList = ({products}) => {
 			console.log(arrayOfIndexes);
 		}
 
+		//Run the animation on all items found in the arrayOfIndexes
 		for (let i = 0; i < arrayOfIndexes.length; i++) {
 			console.log(productItemsRef.current[arrayOfIndexes[i]]);
 
 			gsap.timeline().to(productItemsRef.current[arrayOfIndexes[i]], {
 				duration: 1.5,
+				ease: "power1.inOut",
 				opacity: 0,
 			});
 		}
+
+		setTimeout(() => {
+			const flipState = Flip.getState(productItemsRef.current[index]);
+			const splash = document.querySelector(".splash");
+			splash.appendChild(productItemsRef.current[index]);
+
+			Flip.from(flipState, {
+				duration: 1,
+				ease: "power1.inOut",
+				absolute: true,
+				// onComplete: myFunc,
+			});
+		}, 1500);
 	};
 
 	return (
