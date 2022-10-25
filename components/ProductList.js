@@ -40,8 +40,6 @@ const ProductList = ({products}) => {
 			opacity: 0,
 		});
 
-		//TODO fix stutter where the page will jump to the top
-		//if the very bottom product is clicked
 		//TODO make this a callback after the gsap timeline plays
 		//rather than a setTimeout
 		setTimeout(() => {
@@ -59,16 +57,16 @@ const ProductList = ({products}) => {
 		}, 1000);
 
 		//Finally route to that page
-
-		setTimeout(() => {
-			router.push(`/products/${product.node.handle}`);
-		}, 3000);
+		// setTimeout(() => {
+		// 	router.push(`/products/${product.node.handle}`);
+		// }, 3000);
 	};
 
 	return (
 		<div className="container grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
 			{products.map((product, index) => (
 				<div
+					className="h-[200px] min-[420px]:h-[350px]" //TODO get this arbitary media query working or define a tweak point
 					key={product.node.id}
 					ref={(el) => {
 						productItemsRef.current.push(el);
