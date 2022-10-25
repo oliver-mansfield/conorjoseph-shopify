@@ -1,10 +1,15 @@
 import ProductListItem from "./ProductListItem";
 import {useRef, useState} from "react";
+import Image from "next/image";
+import {useRouter} from "next/router";
 import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
 
 const ProductList = ({products}) => {
 	const productItemsRef = useRef([]);
+	const productImageRef = useRef([]);
+	const productTitleRef = useRef([]);
+	const router = useRouter();
 
 	const handleClick = (product, index) => {
 		// const url = `/products/${product.node.handle}`;
@@ -16,32 +21,48 @@ const ProductList = ({products}) => {
 			if (i !== index) {
 				arrayOfIndexes.push(i);
 			}
-			console.log(arrayOfIndexes);
 		}
 
+		//FADE OUT OTHER ITEMS
 		//Run the animation on all items found in the arrayOfIndexes
 		for (let i = 0; i < arrayOfIndexes.length; i++) {
-			console.log(productItemsRef.current[arrayOfIndexes[i]]);
-
 			gsap.timeline().to(productItemsRef.current[arrayOfIndexes[i]], {
-				duration: 1.5,
+				duration: 1,
 				ease: "power1.inOut",
 				opacity: 0,
 			});
 		}
 
+		//Fade out clicked item title
+		gsap.timeline().to(productTitleRef.current[index], {
+			duration: 1,
+			ease: "power1.inOut",
+			opacity: 0,
+		});
+
+		//TODO fix stutter where the page will jump to the top
+		//if the very bottom product is clicked
+		//TODO make this a callback after the gsap timeline plays
+		//rather than a setTimeout
 		setTimeout(() => {
-			const flipState = Flip.getState(productItemsRef.current[index]);
+			const flipState = Flip.getState(productImageRef.current[index]);
 			const splash = document.querySelector(".splash");
-			splash.appendChild(productItemsRef.current[index]);
+
+			splash.appendChild(productImageRef.current[index]);
 
 			Flip.from(flipState, {
 				duration: 1,
 				ease: "power1.inOut",
-				absolute: true,
+				// absolute: true,
 				// onComplete: myFunc,
 			});
-		}, 1500);
+		}, 1000);
+
+		//Finally route to that page
+
+		setTimeout(() => {
+			router.push(`/products/${product.node.handle}`);
+		}, 3000);
 	};
 
 	return (
@@ -53,25 +74,37 @@ const ProductList = ({products}) => {
 						productItemsRef.current.push(el);
 					}}
 				>
-					<button
+					<div
 						onClick={() => {
 							handleClick(product, index);
 						}}
 						className="cursor-pointer"
 					>
 						<div>
-							<img
-								src={product.node.images.edges[0].node.originalSrc}
-								// ref={imageRef}
-							/>
+							<div
+								className="image-container"
+								ref={(el) => {
+									productImageRef.current.push(el);
+								}}
+							>
+								<Image
+									src={product.node.images.edges[0].node.originalSrc}
+									width="1400"
+									height="750"
+									layout="responsive"
+								/>
+							</div>
 
-							<div className="mt-[-3rem] text-center perspective-container">
+							<div
+								className="mt-[-3rem] text-center perspective-container"
+								ref={(el) => {
+									productTitleRef.current.push(el);
+								}}
+							>
 								<h2 className="perspective-text">{product.node.title}</h2>
-								{/* <p>£{product.node.priceRange.minVariantPrice.amount}</p> */}
 							</div>
 						</div>
-					</button>
-					{/* <ProductListItem product={product} /> */}
+					</div>
 				</div>
 			))}
 		</div>
