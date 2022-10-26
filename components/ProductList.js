@@ -58,7 +58,7 @@ const ProductList = ({products}) => {
 		//Finally route to that page
 		setTimeout(() => {
 			router.push(`/products/${product.node.handle}`);
-		}, 3000);
+		}, 2000);
 	};
 
 	return (
