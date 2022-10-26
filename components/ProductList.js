@@ -28,16 +28,17 @@ const ProductList = ({products}) => {
 			gsap.timeline().to(productItemsRef.current[arrayOfIndexes[i]], {
 				opacity: 0,
 				// rotation: 5,
-				skewY: 5,
+				skewY: 3,
+				scale: 0.8,
 				y: 30,
-				duration: 1,
-				ease: "power1.inOut",
+				duration: 0.5,
+				ease: "power1.Out",
 			});
 		}
 
 		//Fade out clicked item title
 		gsap.timeline().to(productTitleRef.current[index], {
-			duration: 1,
+			duration: 0.5,
 			ease: "power1.inOut",
 			opacity: 0,
 		});
@@ -52,11 +53,11 @@ const ProductList = ({products}) => {
 
 			Flip.from(flipState, {
 				duration: 1,
-				ease: "power1.inOut",
+				ease: "power1.Out",
 				// absolute: true,
 				// onComplete: myFunc,
 			});
-		}, 1000);
+		}, 500);
 
 		//Finally route to that page
 		setTimeout(() => {
