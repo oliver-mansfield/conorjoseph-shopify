@@ -26,9 +26,12 @@ const ProductList = ({products}) => {
 		//Run the animation on all items found in the arrayOfIndexes
 		for (let i = 0; i < arrayOfIndexes.length; i++) {
 			gsap.timeline().to(productItemsRef.current[arrayOfIndexes[i]], {
+				opacity: 0,
+				// rotation: 5,
+				skewY: 5,
+				y: 30,
 				duration: 1,
 				ease: "power1.inOut",
-				opacity: 0,
 			});
 		}
 
