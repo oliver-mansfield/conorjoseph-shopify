@@ -1,9 +1,10 @@
-import ProductListItem from "./ProductListItem";
 import {useRef, useState} from "react";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
+
+gsap.registerPlugin(Flip);
 
 const ProductList = ({products}) => {
 	const productItemsRef = useRef([]);
@@ -12,8 +13,6 @@ const ProductList = ({products}) => {
 	const router = useRouter();
 
 	const handleClick = (product, index) => {
-		// const url = `/products/${product.node.handle}`;
-
 		//Create an array of indexes of all the items except the one which was clicked (index)
 		const arrayOfIndexes = [];
 
@@ -57,16 +56,16 @@ const ProductList = ({products}) => {
 		}, 1000);
 
 		//Finally route to that page
-		// setTimeout(() => {
-		// 	router.push(`/products/${product.node.handle}`);
-		// }, 3000);
+		setTimeout(() => {
+			router.push(`/products/${product.node.handle}`);
+		}, 3000);
 	};
 
 	return (
 		<div className="container grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
 			{products.map((product, index) => (
 				<div
-					className="h-[200px] min-[420px]:h-[350px]" //TODO get this arbitary media query working or define a tweak point
+					className="h-[250px] min-[420px]:h-[350px]" //TODO get this arbitary media query working or define a tweak point
 					key={product.node.id}
 					ref={(el) => {
 						productItemsRef.current.push(el);

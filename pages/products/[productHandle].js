@@ -2,7 +2,7 @@ import getProductByHandle from "lib/getProductByHandle";
 import getAllProducts from "lib/getAllProducts";
 import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
-// import ModelsGallery from "components/product-page/ModelsGallery";
+import ModelsGallery from "components/product-page/ModelsGallery";
 
 function Product({productData}) {
 	return (
@@ -22,7 +22,7 @@ function Product({productData}) {
 					</div>
 				</div>
 			</div>
-			{/* <ModelsGallery productData={productData} /> */}
+			<ModelsGallery productData={productData} />
 		</div>
 	);
 }

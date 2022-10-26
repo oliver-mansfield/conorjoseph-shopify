@@ -37,6 +37,10 @@
 	.button {
 		@apply bg-gold px-8 py-2 uppercase;
 	}
+
+	body {
+		scrollbar-gutter: stable both-edges;
+	}
 }
 
 .perspective-container {

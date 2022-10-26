@@ -4,25 +4,28 @@ import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
 
 const Header = () => {
-	const logoRef = useRef(null);
+	const headerRef = useRef(null);
 
-	useEffect(() => {
-		console.log(logoRef);
-		gsap.from(logoRef.current, {
-			autoAlpha: 0,
-			ease: "none",
-			delay: 1,
-		});
-	}, []);
+	// useEffect(() => {
+	// 	console.log(logoRef);
+	// 	gsap.from(logoRef.current, {
+	// 		autoAlpha: 0,
+	// 		ease: "none",
+	// 		delay: 1,
+	// 	});
+	// }, []);
 
 	return (
-		<header className="p-8 flex justify-between" ref={logoRef}>
+		<header
+			className="p-2 flex justify-between sticky top-0 z-10"
+			ref={headerRef}
+		>
 			<Link href="/">
-				<div className="perspective-container">
+				<div className="perspective-container p-4">
 					<h3 className="perspective-text">Conor Joseph</h3>
 				</div>
 			</Link>
-			<p>Cart</p>
+			<p className="bg-black p-4">Cart</p>
 			<Cart />
 		</header>
 	);

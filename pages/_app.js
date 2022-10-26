@@ -5,10 +5,10 @@ import {CartContextProvider} from "contexts/CartContext";
 function MyApp({Component, pageProps}) {
 	return (
 		<CartContextProvider>
-			<>
+			<div>
 				<Header />
 				<Component {...pageProps} />;
-			</>
+			</div>
 		</CartContextProvider>
 	);
 }
