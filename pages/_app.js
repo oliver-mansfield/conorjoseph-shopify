@@ -6,7 +6,7 @@ function MyApp({Component, pageProps}) {
 	return (
 		<CartContextProvider>
 			<div>
-				<Header />
+				{/* <Header /> */}
 				<Component {...pageProps} />;
 			</div>
 		</CartContextProvider>

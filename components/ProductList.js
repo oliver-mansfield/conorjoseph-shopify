@@ -32,13 +32,13 @@ const ProductList = ({products}) => {
 				scale: 0.8,
 				y: 30,
 				duration: 0.5,
-				ease: "power1.Out",
+				ease: "power1.inOut",
 			});
 		}
 
 		//Fade out clicked item title
 		gsap.timeline().to(productTitleRef.current[index], {
-			duration: 0.5,
+			duration: 0.1,
 			ease: "power1.inOut",
 			opacity: 0,
 		});
@@ -52,17 +52,17 @@ const ProductList = ({products}) => {
 			splash.appendChild(productImageRef.current[index]);
 
 			Flip.from(flipState, {
-				duration: 1,
-				ease: "power1.Out",
-				// absolute: true,
+				duration: 0.8,
+				ease: "power1.inOut",
+				absolute: true,
 				// onComplete: myFunc,
 			});
-		}, 500);
+		}, 100);
 
 		//Finally route to that page
 		setTimeout(() => {
 			router.push(`/products/${product.node.handle}`);
-		}, 2000);
+		}, 750);
 	};
 
 	return (
