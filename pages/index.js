@@ -7,7 +7,12 @@ import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import ProductList from "../components/ProductList";
 
+import CartContext from "contexts/CartContext";
+import {useContext} from "react";
+
 export default function Home({products}) {
+	const cartContext = useContext(CartContext);
+
 	return (
 		<div>
 			<Head>
@@ -19,7 +24,8 @@ export default function Home({products}) {
 			<Cover />
 			<Intro />
 			<ProductList products={products} />
-			<Splash />
+
+			{cartContext.splashShown && <Splash />}
 		</div>
 	);
 }

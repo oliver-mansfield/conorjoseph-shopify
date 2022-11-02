@@ -10,6 +10,7 @@ const CartContext = createContext();
 export function CartContextProvider({children}) {
 	const [cartState, setCartState] = useState([]);
 	const [cartShown, setCartShown] = useState(false);
+	const [splashShown, setSplashShown] = useState(false);
 
 	const addProductToCart = (product) => {
 		setCartState([...cartState, product]);
@@ -36,7 +37,14 @@ export function CartContextProvider({children}) {
 
 	return (
 		<CartContext.Provider
-			value={{cartState, cartShown, setCartShown, addProductToCart}}
+			value={{
+				cartState,
+				cartShown,
+				setCartShown,
+				splashShown,
+				setSplashShown,
+				addProductToCart,
+			}}
 		>
 			{children}
 		</CartContext.Provider>

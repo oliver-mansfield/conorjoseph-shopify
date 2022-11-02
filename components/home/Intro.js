@@ -1,7 +1,7 @@
 const Intro = () => {
 	return (
-		<>
-			<div className="max-w-2xl grid grid-cols sm:grid-cols-2 gap-5 mx-auto ">
+		<div className="my-40">
+			<div className="max-w-2xl grid grid-cols sm:grid-cols-2 gap-5 mx-auto">
 				<p>
 					Second Skin is the latest collection by Conor Joseph, which sees the
 					Jewellery artist pay homage to the human body and its varying
@@ -16,7 +16,7 @@ const Intro = () => {
 					poeticism.
 				</p>
 			</div>
-		</>
+		</div>
 	);
 };
 

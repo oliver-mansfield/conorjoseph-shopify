@@ -1,16 +1,24 @@
-import {useRef, useState} from "react";
+import {useRef, useState, useContext, useEffect} from "react";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
+import CartContext from "contexts/CartContext";
 
 gsap.registerPlugin(Flip);
 
 const ProductList = ({products}) => {
+	const cartContext = useContext(CartContext);
+
 	const productItemsRef = useRef([]);
 	const productImageRef = useRef([]);
 	const productTitleRef = useRef([]);
 	const router = useRouter();
+
+	//Reset
+	useEffect(() => {
+		cartContext.setSplashShown(false);
+	}, []);
 
 	const handleClick = (product, index) => {
 		//Create an array of indexes of all the items except the one which was clicked (index)
@@ -43,6 +51,9 @@ const ProductList = ({products}) => {
 			opacity: 0,
 		});
 
+		//Fade in splash from CartContext
+		cartContext.setSplashShown(true);
+
 		//TODO make this a callback after the gsap timeline plays
 		//rather than a setTimeout
 		setTimeout(() => {
@@ -69,7 +80,7 @@ const ProductList = ({products}) => {
 		<div className="container grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
 			{products.map((product, index) => (
 				<div
-					className="h-[250px] min-[420px]:h-[350px]" //TODO get this arbitary media query working or define a tweak point
+					className="min-h-[200px] sm:min-h-[250px] lg:min-h-[350px]" //TODO get this arbitary media query working or define a tweak point
 					key={product.node.id}
 					ref={(el) => {
 						productItemsRef.current.push(el);
