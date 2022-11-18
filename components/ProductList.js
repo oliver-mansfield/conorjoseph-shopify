@@ -52,6 +52,8 @@ const ProductList = ({products}) => {
 		});
 
 		//Fade in splash from CartContext
+		//TODO Theres a split second where the clicked product
+		//vanishes because the splash overlay is shown on top of it
 		cartContext.setSplashShown(true);
 
 		//TODO make this a callback after the gsap timeline plays

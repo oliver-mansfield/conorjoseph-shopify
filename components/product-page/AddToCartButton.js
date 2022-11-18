@@ -1,33 +1,15 @@
-import {useContext} from "react";
-import CartContext from "contexts/CartContext";
+import {useDispatch} from "react-redux";
+import {addProductToCart} from "stores/cartSlice";
 
 const AddToCartButton = ({productData}) => {
-	//Update Cart context from here
-	//Add the handle of the product
-	//Cart.js renders the updated context
-
-	const cartContext = useContext(CartContext);
-
-	// const handleUpdateCartContext = (productData) => {
-	// 	// console.log("click" + productData.handle);
-	// 	// const {cartState, setCartState} = useContext(CartContextProvider);
-	// 	// setCartState([
-	// 	// 	{
-	// 	// 		handle: "Fake ring ok",
-	// 	// 	},
-	// 	// 	{
-	// 	// 		handle: "Fake ring 2",
-	// 	// 	},
-	// 	// ]);
-	// };
+	const dispatch = useDispatch();
 
 	return (
 		<>
 			<button
 				className="button"
 				onClick={() => {
-					cartContext.addProductToCart(productData);
-					cartContext.setCartShown(true);
+					dispatch(addProductToCart(productData));
 				}}
 			>
 				Add {productData.handle} to cart

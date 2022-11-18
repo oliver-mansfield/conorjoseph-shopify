@@ -1,15 +1,16 @@
 import "../styles/globals.css";
 import Header from "components/Header";
-import {CartContextProvider} from "contexts/CartContext";
+import {store} from "../store";
+import {Provider} from "react-redux";
 
 function MyApp({Component, pageProps}) {
 	return (
-		<CartContextProvider>
+		<Provider store={store}>
 			<div>
-				{/* <Header /> */}
+				<Header />
 				<Component {...pageProps} />;
 			</div>
-		</CartContextProvider>
+		</Provider>
 	);
 }
 
