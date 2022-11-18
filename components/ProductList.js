@@ -1,23 +1,26 @@
-import {useRef, useState, useContext, useEffect} from "react";
+import {useRef, useState, useEffect} from "react";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
-import CartContext from "contexts/CartContext";
+import {useDispatch, useSelector} from "react-redux";
+import {showSplash, hideSplash} from "stores/appSlice";
 
 gsap.registerPlugin(Flip);
 
 const ProductList = ({products}) => {
-	const cartContext = useContext(CartContext);
-
 	const productItemsRef = useRef([]);
 	const productImageRef = useRef([]);
 	const productTitleRef = useRef([]);
 	const router = useRouter();
 
+	const splashVisible = useSelector((state) => state.app.splashVisible);
+	const dispatch = useDispatch();
+
 	//Reset
 	useEffect(() => {
-		cartContext.setSplashShown(false);
+		dispatch(hideSplash());
+		console.log("ok");
 	}, []);
 
 	const handleClick = (product, index) => {
@@ -51,10 +54,10 @@ const ProductList = ({products}) => {
 			opacity: 0,
 		});
 
-		//Fade in splash from CartContext
+		//Fade in splash
 		//TODO Theres a split second where the clicked product
 		//vanishes because the splash overlay is shown on top of it
-		cartContext.setSplashShown(true);
+		dispatch(showSplash());
 
 		//TODO make this a callback after the gsap timeline plays
 		//rather than a setTimeout
