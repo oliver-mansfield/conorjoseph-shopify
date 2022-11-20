@@ -5,6 +5,7 @@ import getAllProducts from "lib/getAllProducts";
 import Splash from "components/home/Splash";
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
+import Header from "../components/Header";
 import ProductList from "../components/ProductList";
 
 export default function Home({products}) {
@@ -17,9 +18,9 @@ export default function Home({products}) {
 			</Head>
 
 			<Cover />
+			<Header />
 			<Intro />
 			<ProductList products={products} />
-
 			<Splash />
 		</div>
 	);

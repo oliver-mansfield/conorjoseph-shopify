@@ -12,7 +12,7 @@ const AddToCartButton = ({productData}) => {
 					dispatch(addProductToCart(productData));
 				}}
 			>
-				Add {productData.handle} to cart
+				Add to cart
 			</button>
 		</>
 	);

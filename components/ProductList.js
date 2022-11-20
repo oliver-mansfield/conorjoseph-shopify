@@ -54,9 +54,6 @@ const ProductList = ({products}) => {
 			opacity: 0,
 		});
 
-		//Fade in splash
-		//TODO Theres a split second where the clicked product
-		//vanishes because the splash overlay is shown on top of it
 		dispatch(showSplash());
 
 		//TODO make this a callback after the gsap timeline plays

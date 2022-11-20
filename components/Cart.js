@@ -9,21 +9,31 @@ const Cart = () => {
 	return (
 		<>
 			{cartVisible && (
-				<div className="fixed top-9 right-0 bg-gold p-5">
-					<p
+				<div className="fixed top-0 left-0 h-full w-full">
+					<div className="relative z-20 flex justify-center items-center h-full w-full pointer-events-none">
+						<div className="bg-gradient-to-b from-brown1 to-brown2 pointer-events-auto">
+							<p
+								onClick={() => {
+									dispatch(hideCart());
+								}}
+							>
+								Close
+							</p>
+							<div>
+								{cartProducts.map((product, index) => {
+									return <p key={index}>{product.title}</p>;
+								})}
+								<p>placeholder</p>
+							</div>
+							<button className="button">Checkout</button>
+						</div>
+					</div>
+					<div
 						onClick={() => {
 							dispatch(hideCart());
 						}}
-					>
-						Close
-					</p>
-					<div>
-						{cartProducts.map((product, index) => {
-							return <p key={index}>{product.title}</p>;
-						})}
-						<p>placeholder</p>
-					</div>
-					<button className="button">Checkout</button>
+						className="opacity-50 bg-black w-full h-full fixed top-0 left-0 z-10"
+					></div>
 				</div>
 			)}
 		</>

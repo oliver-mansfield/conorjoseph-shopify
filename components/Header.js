@@ -17,7 +17,7 @@ const Header = () => {
 
 	return (
 		<header
-			className="p-2 flex justify-between sticky top-0 z-10"
+			className="p-2 flex justify-between sticky top-0 z-50"
 			ref={headerRef}
 		>
 			<Link href="/">

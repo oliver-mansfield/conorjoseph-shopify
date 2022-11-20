@@ -3,10 +3,12 @@ import getAllProducts from "lib/getAllProducts";
 import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";
+import Header from "components/Header";
 
 function Product({productData}) {
 	return (
-		<div>
+		<>
+			<Header />
 			<div className="md:relative z-10 w-full">
 				<div className="md:max-w-5xl mx-auto">
 					<Image
@@ -23,7 +25,7 @@ function Product({productData}) {
 				</div>
 			</div>
 			<ModelsGallery productData={productData} />
-		</div>
+		</>
 	);
 }
 

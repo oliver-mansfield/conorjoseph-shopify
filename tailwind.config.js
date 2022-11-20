@@ -8,6 +8,8 @@ module.exports = {
 		extend: {
 			colors: {
 				gold: "#E3CFB4",
+				brown1: "#96887F",
+				brown2: "#61544C",
 			},
 			fontFamily: {
 				serif: ["Libre Baskerville", "serif"],
