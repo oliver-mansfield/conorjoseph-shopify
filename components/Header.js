@@ -2,9 +2,12 @@ import Link from "next/link";
 import Cart from "components/Cart";
 import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
+import {useSelector} from "react-redux";
 
 const Header = () => {
 	const headerRef = useRef(null);
+
+	const cartVisible = useSelector((state) => state.cart.cartVisible);
 
 	// useEffect(() => {
 	// 	console.log(logoRef);
@@ -26,7 +29,7 @@ const Header = () => {
 				</div>
 			</Link>
 			<p className="bg-black p-4">Cart</p>
-			<Cart />
+			{cartVisible && <Cart />}
 		</header>
 	);
 };
