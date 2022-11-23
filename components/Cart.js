@@ -1,5 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
-import {hideCart, increaseQty} from "stores/cartSlice";
+import {
+	hideCart,
+	increaseQty,
+	decreaseQty,
+	removeProductFromCart,
+} from "stores/cartSlice";
 import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
 
@@ -78,7 +83,20 @@ const Cart = () => {
 											Plus
 										</button>
 										<span>Qty {product.quantity}</span>
-										<button>Minus</button>
+										<button
+											onClick={() => {
+												dispatch(decreaseQty(product.handle));
+											}}
+										>
+											Minus
+										</button>
+										<button
+											onClick={() => {
+												dispatch(removeProductFromCart(product.handle));
+											}}
+										>
+											Remove
+										</button>
 									</div>
 								);
 							})}
