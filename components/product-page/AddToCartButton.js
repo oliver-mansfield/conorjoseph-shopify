@@ -9,6 +9,7 @@ const AddToCartButton = ({productData}) => {
 			<button
 				className="button"
 				onClick={() => {
+					console.log(productData);
 					dispatch(addProductToCart(productData));
 				}}
 			>

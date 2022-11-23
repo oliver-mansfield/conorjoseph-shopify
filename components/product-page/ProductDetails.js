@@ -16,7 +16,10 @@ const ProductDetails = ({productData}) => {
 	}, []);
 
 	return (
-		<div className="max-w-xs" ref={detailsRef}>
+		<div
+			className="max-w-xs p-5 bg-gradient-to-b from-brown1 to-brown2"
+			ref={detailsRef}
+		>
 			<h2 className="text-center mb-3">{productData.title}</h2>
 			<h3 className="text-center text-2xl mb-6">
 				{formatPrice(productData.priceRange.minVariantPrice.amount)}
