@@ -7,6 +7,7 @@ import {
 } from "stores/cartSlice";
 import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
+import CartTotal from "./cart/CartTotal";
 
 const Cart = () => {
 	const cartProducts = useSelector((state) => state.cart.cartProducts);
@@ -71,36 +72,42 @@ const Cart = () => {
 							/>
 						</svg>
 						<div>
-							{cartProducts.map((product, index) => {
-								return (
-									<div key={index}>
-										<p>{product.title}</p>
-										<button
-											onClick={() => {
-												dispatch(increaseQty(product.handle));
-											}}
-										>
-											Plus
-										</button>
-										<span>Qty {product.quantity}</span>
-										<button
-											onClick={() => {
-												dispatch(decreaseQty(product.handle));
-											}}
-										>
-											Minus
-										</button>
-										<button
-											onClick={() => {
-												dispatch(removeProductFromCart(product.handle));
-											}}
-										>
-											Remove
-										</button>
-									</div>
-								);
-							})}
+							{cartProducts.length === 0 ? (
+								<p>You have no products in your cart.</p>
+							) : (
+								cartProducts.map((product, index) => {
+									return (
+										<div key={index}>
+											<p>{product.title}</p>
+											<button
+												onClick={() => {
+													dispatch(increaseQty(product.handle));
+												}}
+											>
+												Plus
+											</button>
+											<span>Qty {product.quantity}</span>
+											<button
+												onClick={() => {
+													dispatch(decreaseQty(product.handle));
+												}}
+											>
+												Minus
+											</button>
+											<button
+												onClick={() => {
+													dispatch(removeProductFromCart(product.handle));
+												}}
+											>
+												Remove
+											</button>
+										</div>
+									);
+								})
+							)}
 						</div>
+						<CartTotal />
+
 						<button className="button">Checkout</button>
 					</div>
 				</div>

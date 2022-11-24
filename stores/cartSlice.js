@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
 		removeProductFromCart: (state, action) => {
 			//.filter creates a new array with the product taken out
 			const removeProduct = state.cartProducts.filter(
-				(item) => item.handle !== action.payload
+				(prod) => prod.handle !== action.payload
 			);
 			state.cartProducts = removeProduct;
 		},
