@@ -7,7 +7,9 @@ import {
 } from "stores/cartSlice";
 import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
+import Image from "next/image";
 import CartTotal from "./cart/CartTotal";
+import formatPrice from "lib/formatPrice";
 
 const Cart = () => {
 	const cartProducts = useSelector((state) => state.cart.cartProducts);
@@ -55,7 +57,10 @@ const Cart = () => {
 					className="relative z-20 flex justify-center items-start mt-40 h-full w-full pointer-events-none"
 					ref={cartContainerRef}
 				>
-					<div className="relative bg-gradient-to-b from-brown1 to-brown2  pointer-events-auto p-10">
+					<div
+						className="relative bg-gradient-to-b from-brown1 to-brown2 pointer-events-auto p-10 w-[700px]	
+					"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
@@ -77,30 +82,50 @@ const Cart = () => {
 							) : (
 								cartProducts.map((product, index) => {
 									return (
-										<div key={index}>
-											<p>{product.title}</p>
-											<button
-												onClick={() => {
-													dispatch(increaseQty(product.handle));
-												}}
-											>
-												Plus
-											</button>
-											<span>Qty {product.quantity}</span>
-											<button
-												onClick={() => {
-													dispatch(decreaseQty(product.handle));
-												}}
-											>
-												Minus
-											</button>
-											<button
-												onClick={() => {
-													dispatch(removeProductFromCart(product.handle));
-												}}
-											>
-												Remove
-											</button>
+										<div className="flex mb-4" key={index}>
+											<div className="h-[90px] w-[120px] overflow-hidden relative border-white border-2 mr-4">
+												<div className="w-[180px] absolute left-[-25%]">
+													<Image
+														src={product.images.edges[0].node.url}
+														width="1400"
+														height="750"
+														objectFit="cover"
+													/>
+												</div>
+											</div>
+											<div className="flex flex-col justify-between">
+												<p>{product.title}</p>
+
+												<div>
+													<p>
+														{formatPrice(
+															product.priceRange.minVariantPrice.amount
+														)}
+													</p>
+													<button
+														onClick={() => {
+															dispatch(increaseQty(product.handle));
+														}}
+													>
+														Plus
+													</button>
+													<span>Qty {product.quantity}</span>
+													<button
+														onClick={() => {
+															dispatch(decreaseQty(product.handle));
+														}}
+													>
+														Minus
+													</button>
+													<button
+														onClick={() => {
+															dispatch(removeProductFromCart(product.handle));
+														}}
+													>
+														Remove
+													</button>
+												</div>
+											</div>
 										</div>
 									);
 								})

@@ -1,4 +1,5 @@
 import {useSelector} from "react-redux";
+import formatPrice from "lib/formatPrice";
 
 const CartTotal = () => {
 	const cartProducts = useSelector((state) => state.cart.cartProducts);
@@ -14,11 +15,10 @@ const CartTotal = () => {
 		return {totalQuantity, totalPrice};
 	};
 	return (
-		<>
+		<div className="text-right">
 			<p>Total</p>
-			<p>{getTotalPrice().totalPrice}</p>
-			<p>{getTotalPrice().totalQuantity}</p>
-		</>
+			<p>{formatPrice(getTotalPrice().totalPrice)}</p>
+		</div>
 	);
 };
 
