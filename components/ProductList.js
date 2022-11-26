@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect} from "react";
+import {useRef, useEffect} from "react";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import gsap from "gsap/dist/all";

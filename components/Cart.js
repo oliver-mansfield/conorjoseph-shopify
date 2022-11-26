@@ -1,15 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import {
-	hideCart,
-	increaseQty,
-	decreaseQty,
-	removeProductFromCart,
-} from "stores/cartSlice";
+import {hideCart} from "stores/cartSlice";
 import {gsap} from "gsap";
 import {useRef, useEffect} from "react";
 import Image from "next/image";
 import CartTotal from "./cart/CartTotal";
 import formatPrice from "lib/formatPrice";
+import QuantityControls from "./cart/QuantityControls";
 
 const Cart = () => {
 	const cartProducts = useSelector((state) => state.cart.cartProducts);
@@ -102,28 +98,7 @@ const Cart = () => {
 															product.priceRange.minVariantPrice.amount
 														)}
 													</p>
-													<button
-														onClick={() => {
-															dispatch(increaseQty(product.handle));
-														}}
-													>
-														Plus
-													</button>
-													<span>Qty {product.quantity}</span>
-													<button
-														onClick={() => {
-															dispatch(decreaseQty(product.handle));
-														}}
-													>
-														Minus
-													</button>
-													<button
-														onClick={() => {
-															dispatch(removeProductFromCart(product.handle));
-														}}
-													>
-														Remove
-													</button>
+													<QuantityControls product={product} />
 												</div>
 											</div>
 										</div>
