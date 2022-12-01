@@ -24,7 +24,7 @@ const ProductDetails = ({productData}) => {
 			<h3 className="text-center text-2xl mb-6">
 				{formatPrice(productData.priceRange.minVariantPrice.amount)}
 			</h3>
-			<p className="text-justify">{productData.description}</p>
+			<p className="text-justify font-sansSerif">{productData.description}</p>
 
 			<div className="mt-4 mx-auto">
 				<AddToCartButton productData={productData} />

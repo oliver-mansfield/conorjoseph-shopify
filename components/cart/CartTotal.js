@@ -16,8 +16,8 @@ const CartTotal = () => {
 	};
 	return (
 		<div className="text-right">
-			<p>Total</p>
-			<p>{formatPrice(getTotalPrice().totalPrice)}</p>
+			<p className="text-2xl font-light">Total</p>
+			<p className="text-3xl">{formatPrice(getTotalPrice().totalPrice)}</p>
 		</div>
 	);
 };

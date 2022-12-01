@@ -89,11 +89,11 @@ const Cart = () => {
 													/>
 												</div>
 											</div>
-											<div className="flex flex-col justify-between">
-												<p>{product.title}</p>
+											<div className="flex grow flex-col justify-between">
+												<p className="text-2xl">{product.title}</p>
 
 												<div>
-													<p>
+													<p className="text-right text-xl">
 														{formatPrice(
 															product.priceRange.minVariantPrice.amount
 														)}

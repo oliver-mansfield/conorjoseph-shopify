@@ -33,7 +33,7 @@
 	p,
 	a,
 	span {
-		@apply text-white font-sansSerif font-normal leading-7;
+		@apply text-white font-serif font-normal leading-7;
 	}
 
 	.button {

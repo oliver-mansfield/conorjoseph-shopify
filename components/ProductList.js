@@ -43,14 +43,14 @@ const ProductList = ({products}) => {
 				scale: 0.8,
 				y: 30,
 				duration: 0.5,
-				ease: "power1.inOut",
+				ease: "power3.inOut",
 			});
 		}
 
 		//Fade out clicked item title
 		gsap.timeline().to(productTitleRef.current[index], {
 			duration: 0.1,
-			ease: "power1.inOut",
+			ease: "power3.inOut",
 			opacity: 0,
 		});
 
@@ -66,7 +66,7 @@ const ProductList = ({products}) => {
 
 			Flip.from(flipState, {
 				duration: 0.8,
-				ease: "power1.inOut",
+				ease: "power3.inOut",
 				absolute: true,
 				// onComplete: myFunc,
 			});
