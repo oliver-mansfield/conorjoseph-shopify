@@ -15,9 +15,9 @@ function MyApp({Component, pageProps}) {
 export default MyApp;
 
 //TODO
-//Animate cover text better
+//Animate cover text better DONE
 //Set up local storage to percist cart on browser refresh
-//Fade out other items better on page transition
+//Fade out other items better on page transition //DONE - but need to handle nav if it's half way up page
 //Get better easing value
 //Button styles
 //Finish Cart styling

@@ -1,8 +1,12 @@
 import Image from "next/image";
 import {useRef, useEffect} from "react";
 import gsap from "gsap/dist/all";
+import {useSelector} from "react-redux";
 
 const Cover = () => {
+	const splashVisible = useSelector((state) => state.app.splashVisible);
+
+	const coverRef = useRef(null);
 	const lineRef = useRef(null);
 	const conorRef = useRef(null);
 	const skinRef = useRef(null);
@@ -11,42 +15,52 @@ const Cover = () => {
 
 	useEffect(() => {
 		gsap.timeline().from(conorRef.current, {
-			y: "48px",
+			y: "65px",
 			duration: 1.5,
 			ease: "power3.inOut",
-			delay: 1,
+			delay: 0.5,
 		});
 		gsap.timeline().from(skinRef.current, {
-			y: "-50px",
+			y: "-60px",
 			duration: 1.5,
 			ease: "power3.inOut",
-			delay: 1,
+			delay: 0.5,
 		});
 		gsap.timeline().from(girlRef.current, {
 			x: "30px",
 			opacity: 0,
 			duration: 1.5,
 			ease: "power3.inOut",
-			delay: 1,
+			delay: 0.5,
 		});
 		gsap.timeline().from(guyRef.current, {
 			x: "-30px",
 			opacity: 0,
 			duration: 1.5,
 			ease: "power3.inOut",
-			delay: 1,
+			delay: 0.5,
 		});
 		gsap.timeline().from(lineRef.current, {
 			width: "0px",
 			duration: 1,
 			ease: "power3.inOut",
-			delay: 2,
+			delay: 1.5,
 		});
 	}, []);
 
+	useEffect(() => {
+		if (splashVisible) {
+			gsap.timeline().to(coverRef.current, {
+				duration: 0.5,
+				ease: "power3.inOut",
+				opacity: 0,
+			});
+		}
+	}, [splashVisible]);
+
 	return (
 		<>
-			<div className="gradient-bg-cover h-screen">
+			<div className="gradient-bg-cover h-screen" ref={coverRef}>
 				<div className="relative h-screen overflow-hidden">
 					<div className="absolute z-0 h-full w-full top-32 left-0 sm:top-0 sm:flex items-center justify-center">
 						<div className="relative w-full">

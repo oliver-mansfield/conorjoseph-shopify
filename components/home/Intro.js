@@ -1,6 +1,23 @@
+import gsap from "gsap/dist/all";
+import {useEffect, useRef} from "react";
+import {useSelector} from "react-redux";
+
 const Intro = () => {
+	const splashVisible = useSelector((state) => state.app.splashVisible);
+	const introRef = useRef(null);
+
+	useEffect(() => {
+		if (splashVisible) {
+			gsap.timeline().to(introRef.current, {
+				duration: 0.5,
+				ease: "power3.inOut",
+				opacity: 0,
+			});
+		}
+	}, [splashVisible]);
+
 	return (
-		<div className="my-40">
+		<div className="my-40" ref={introRef}>
 			<div className="max-w-2xl grid grid-cols sm:grid-cols-2 gap-5 mx-auto">
 				<p>
 					Second Skin is the latest collection by Conor Joseph, which sees the

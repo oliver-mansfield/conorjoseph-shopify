@@ -14,13 +14,12 @@ const ProductList = ({products}) => {
 	const productTitleRef = useRef([]);
 	const router = useRouter();
 
-	const splashVisible = useSelector((state) => state.app.splashVisible);
+	// const splashVisible = useSelector((state) => state.app.splashVisible);
 	const dispatch = useDispatch();
 
 	//Reset
 	useEffect(() => {
 		dispatch(hideSplash());
-		console.log("ok");
 	}, []);
 
 	const handleClick = (product, index) => {

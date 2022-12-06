@@ -5,7 +5,19 @@ import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";
 import Header from "components/Header";
 
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+
+import {hideSplash} from "stores/appSlice";
+
 function Product({productData}) {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(hideSplash());
+		console.log("reset splash");
+	}, []);
+
 	return (
 		<>
 			<Header />
