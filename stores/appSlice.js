@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
 	splashVisible: false,
-	// isTransitioning: false,
 };
 
 export const appSlice = createSlice({
@@ -16,22 +15,10 @@ export const appSlice = createSlice({
 			console.log("hide splash");
 			state.splashVisible = false;
 		},
-		// startPageTransition: (state) => {
-		// 	state.isTransitioning = true;
-		// },
-		// endPageTransition: (state) => {
-		// 	state.isTransitioning = false;
-		// },
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const {
-	splashVisible,
-	showSplash,
-	hideSplash,
-	startPageTransition,
-	endPageTransition,
-} = appSlice.actions;
+export const {splashVisible, showSplash, hideSplash} = appSlice.actions;
 
 export default appSlice.reducer;
