@@ -13,9 +13,11 @@ import {hideSplash} from "stores/appSlice";
 function Product({productData}) {
 	const dispatch = useDispatch();
 
+	//Set splashVisible to false
+	//This is to reset for going back to the home page,
+	//not for hiding the splash on this page.
 	useEffect(() => {
 		dispatch(hideSplash());
-		console.log("reset splash");
 	}, []);
 
 	return (

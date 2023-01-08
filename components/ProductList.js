@@ -105,6 +105,7 @@ const ProductList = ({products}) => {
 									width="1400"
 									height="750"
 									layout="responsive"
+									// quality={80}
 								/>
 							</div>
 

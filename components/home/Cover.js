@@ -48,6 +48,8 @@ const Cover = () => {
 		});
 	}, []);
 
+	//When splashVisible changes to true,
+	//Fade out this element to prevent overlapping when the image moves
 	useEffect(() => {
 		if (splashVisible) {
 			gsap.timeline().to(coverRef.current, {
