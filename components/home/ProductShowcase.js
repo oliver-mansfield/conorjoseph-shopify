@@ -1,10 +1,13 @@
+import Articulus from "components/products/articulus";
 import RevealImage from "components/RevealImage";
 
 const ProductShowcase = () => {
 	return (
 		<>
-			<RevealImage imgPath={"/images/girl2.jpg"} />
-			<p>Prod showcase</p>
+			<section>
+				<Articulus />
+				{/* <RevealImage imgPath={"/images/girl2.jpg"} /> */}
+			</section>
 		</>
 	);
 };

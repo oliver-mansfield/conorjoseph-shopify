@@ -18,6 +18,8 @@ export const appSlice = createSlice({
 	},
 });
 
+//write a function to sum two numbers
+
 // Action creators are generated for each case reducer function
 export const {splashVisible, showSplash, hideSplash} = appSlice.actions;
 
