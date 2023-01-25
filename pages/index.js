@@ -1,15 +1,15 @@
 import Head from "next/head";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 import getAllProducts from "lib/getAllProducts";
 import Splash from "components/home/Splash";
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import Header from "../components/Header";
-// import ProductList from "../components/ProductList";
+import ProductList from "../components/ProductList";
 import ProductShowcase from "components/home/ProductShowcase";
 
-export default function Home({products}) {
+export default function Home({ products }) {
 	const splashVisible = useSelector((state) => state.app.splashVisible);
 	// const isTransitioning = useSelector((state) => state.app.isTransitioning);
 
@@ -36,6 +36,6 @@ export async function getStaticProps() {
 	const products = await getAllProducts();
 
 	return {
-		props: {products}, // will be passed to the page component as props
+		props: { products }, // will be passed to the page component as props
 	};
 }
