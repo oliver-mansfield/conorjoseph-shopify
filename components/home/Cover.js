@@ -1,7 +1,7 @@
 import Image from "next/image";
-import {useRef, useEffect} from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap/dist/all";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const Cover = () => {
 	const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -87,6 +87,7 @@ const Cover = () => {
 							layout="responsive"
 							width="647"
 							height="1000"
+							priority
 						/>
 					</div>
 					<div
@@ -98,6 +99,7 @@ const Cover = () => {
 							layout="responsive"
 							width="647"
 							height="1000"
+							priority
 						/>
 					</div>
 				</div>

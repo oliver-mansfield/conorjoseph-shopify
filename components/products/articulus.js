@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import clickedAnimation from 'lib/clickedAnimation';
 import { useRef, useEffect } from 'react';
-
+import { useRouter } from "next/router";
 import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,25 +10,43 @@ import { showSplash, hideSplash } from "stores/appSlice";
 
 gsap.registerPlugin(Flip);
 
-const Articulus = () => {
+const Articulus = ({ products }) => {
 
   const productImageRef = useRef([]);
+  const componentRef = useRef(null);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const splashVisible = useSelector((state) => state.app.splashVisible);
 
   //Reset
   useEffect(() => {
     dispatch(hideSplash());
   }, []);
 
+  useEffect(() => {
+    if (splashVisible) {
+      gsap.timeline().to(componentRef.current, {
+        duration: 0.5,
+        ease: "power3.inOut",
+        opacity: 0,
+      });
+    }
+  }, [splashVisible]);
+
   const handleClick = () => {
     dispatch(showSplash())
     clickedAnimation(productImageRef.current);
+
+    //Finally route to that page
+    setTimeout(() => {
+      router.push(`/products/the-articulus-ring`);
+    }, 750);
   }
 
 
   return (
     <div>
-      <section className='md:grid grid-cols-12 gap-4'>
+      <section className='md:grid grid-cols-12 gap-4' ref={componentRef}>
         <div className='relative text-center row-span-full col-start-2 col-end-7'>
           <div className='mx-auto max-w-xs'>
             <h2>The Articulus Ring</h2>
@@ -37,12 +55,13 @@ const Articulus = () => {
           </div>
           <div className='h-[600px]'>
             <div className='w-full h-full' ref={productImageRef}>
-              <Image src="/images/articulus-product.jpg"
+              <Image src={products[0].node.images.edges[0].node.originalSrc}
                 layout="responsive"
-                width="5100"
-                height="3300"
-                quality="70"
+                width="1400"
+                height="750"
+                quality="100"
                 onClick={handleClick}
+                priority
               />
             </div>
           </div>
@@ -56,6 +75,7 @@ const Articulus = () => {
             width="3300"
             height="5100"
             quality="100"
+            priority
           />
         </div>
 
@@ -65,6 +85,7 @@ const Articulus = () => {
             width="3300"
             height="5100"
             quality="70"
+            priority
           />
         </div>
 

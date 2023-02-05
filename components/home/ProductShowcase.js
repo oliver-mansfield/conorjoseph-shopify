@@ -1,10 +1,16 @@
-import Articulus from "components/products/articulus";
+import Articulus from "components/products/Articulus";
+import Manibus from "components/products/Manibus";
+import Pelis from "components/products/Pellis";
 
-const ProductShowcase = () => {
+const ProductShowcase = ({ products }) => {
+
+	//TODO maybe put the products prop in the global store
 	return (
 		<>
 			<section>
-				<Articulus />
+				<Articulus products={products} />
+				<Pelis />
+				<Manibus />
 			</section>
 		</>
 	);

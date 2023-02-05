@@ -5,12 +5,12 @@ import ProductDetails from "components/product-page/ProductDetails";
 import ModelsGallery from "components/product-page/ModelsGallery";
 import Header from "components/Header";
 
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import {hideSplash} from "stores/appSlice";
+import { hideSplash } from "stores/appSlice";
 
-function Product({productData}) {
+function Product({ productData }) {
 	const dispatch = useDispatch();
 
 	//Set splashVisible to false
@@ -30,6 +30,8 @@ function Product({productData}) {
 						width="1400"
 						height="750"
 						layout="responsive"
+						priority
+						quality="100"
 					/>
 				</div>
 				<div className="md:absolute z-20 w-full top-1/2">
@@ -66,7 +68,7 @@ export async function getStaticProps(context) {
 	const productData = await getProductByHandle(context.params.productHandle);
 
 	return {
-		props: {productData},
+		props: { productData },
 	};
 }
 

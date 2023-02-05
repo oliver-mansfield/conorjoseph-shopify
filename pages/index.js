@@ -8,6 +8,8 @@ import Intro from "../components/home/Intro";
 import Header from "../components/Header";
 import ProductList from "../components/ProductList";
 import ProductShowcase from "components/home/ProductShowcase";
+import Articulus from "components/products/Articulus";
+import Pelis from "components/products/Pellis";
 
 export default function Home({ products }) {
 	const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -25,7 +27,9 @@ export default function Home({ products }) {
 			<Header />
 			<Intro />
 			{/* <ProductList products={products} /> */}
-			<ProductShowcase />
+			{/* <ProductShowcase products={products} /> */}
+			<Articulus products={products} />
+			<Pelis products={products} />
 
 			{splashVisible ? <Splash /> : null}
 		</div>

@@ -1,7 +1,8 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	splashVisible: false,
+	arrayOfIndexes: []
 };
 
 export const appSlice = createSlice({
@@ -15,12 +16,13 @@ export const appSlice = createSlice({
 			console.log("hide splash");
 			state.splashVisible = false;
 		},
+
 	},
 });
 
-//write a function to sum two numbers
+//write a function to sum two numbers	
 
 // Action creators are generated for each case reducer function
-export const {splashVisible, showSplash, hideSplash} = appSlice.actions;
+export const { splashVisible, showSplash, hideSplash } = appSlice.actions;
 
 export default appSlice.reducer;
