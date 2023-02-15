@@ -6,7 +6,7 @@ import Splash from "components/home/Splash";
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import Header from "../components/Header";
-import Articulus from "../components/products/Articulus";
+// import Articulus from "../components/products/Articulus";
 import Pelis from "../components/products/Pellis";
 import Manibus from "../components/products/Manibus";
 
@@ -26,7 +26,7 @@ export default function Home({ products }) {
 			<Header />
 			<Intro />
 
-			<Articulus products={products} />
+			{/* <Articulus products={products} /> */}
 			<Pelis products={products} />
 			<Manibus products={products} />
 
