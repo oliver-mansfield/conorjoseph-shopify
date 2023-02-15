@@ -12,6 +12,7 @@ gsap.registerPlugin(Flip);
 
 const Manibus = ({ products }) => {
 
+  const productImageContainerRef = useRef(null);
   const componentRef = useRef();
   const productImageRef = useRef([]);
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ const Manibus = ({ products }) => {
   }, [splashVisible]);
 
   const handleClick = () => {
+
+    //Prevent layout from collapsing when image is move to splash
+    const height = productImageRef.current.clientHeight;
+    productImageContainerRef.current.style.height = `${height}px`;
+
     dispatch(showSplash())
     clickedAnimation(productImageRef.current);
 
@@ -59,7 +65,7 @@ const Manibus = ({ products }) => {
               18 carat Gold plated triple finger ring, Bespoke fit.
             </div>
           </div>
-          <div>
+          <div ref={productImageContainerRef}>
             <div className='w-full h-full' ref={productImageRef}>
               <Image src={products[2].node.images.edges[0].node.originalSrc}
                 layout="responsive"
@@ -70,8 +76,8 @@ const Manibus = ({ products }) => {
                 priority
               />
             </div>
-            <button className='button' onClick={handleClick}>View Product</button>
           </div>
+          <button className='button' onClick={handleClick}>View Product</button>
         </div>
 
         <div className='hidden md:block row-span-full col-start-9 col-end-13'>

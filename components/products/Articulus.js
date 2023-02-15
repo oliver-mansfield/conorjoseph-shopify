@@ -13,6 +13,7 @@ gsap.registerPlugin(Flip);
 
 const Articulus = ({ products }) => {
 
+  const productImageContainerRef = useRef(null)
   const productImageRef = useRef([]);
   const componentRef = useRef(null);
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ const Articulus = ({ products }) => {
   }, [splashVisible]);
 
   const handleClick = () => {
+
+    //Prevent layout from collapsing when image is move to splash
+    const height = productImageRef.current.clientHeight;
+    productImageContainerRef.current.style.height = `${height}px`;
+
     dispatch(showSplash())
     clickedAnimation(productImageRef.current);
 
@@ -55,8 +61,9 @@ const Articulus = ({ products }) => {
             <div className='text-white'>This Anatomical Ring combines surreal aesthetic and technical design to create a sense of mechanicalism that reflects the dexterity and movement of the fingers.
             </div>
           </div>
-          <div>
-            <div className='w-full h-full cursor-pointer' ref={productImageRef}>
+
+          <div ref={productImageContainerRef}>
+            <div className='cursor-pointer' ref={productImageRef}>
               <Image src={products[0].node.images.edges[0].node.originalSrc}
                 layout="responsive"
                 width="1400"
@@ -66,8 +73,8 @@ const Articulus = ({ products }) => {
                 priority
               />
             </div>
-            <button className='button' onClick={handleClick}>View Product</button>
           </div>
+          <button className='button' onClick={handleClick}>View Product</button>
         </div>
 
         <div className='hidden md:block md:row-span-full md:col-start-7 md:col-end-9'>

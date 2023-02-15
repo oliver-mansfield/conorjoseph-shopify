@@ -12,6 +12,7 @@ gsap.registerPlugin(Flip);
 
 const Pellis = ({ products }) => {
 
+  const productImageContainerRef = useRef(null);
   const componentRef = useRef();
   const productImageRef = useRef([]);
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ const Pellis = ({ products }) => {
   }, [splashVisible]);
 
   const handleClick = () => {
+
+    //Prevent layout from collapsing when image is move to splash
+    const height = productImageRef.current.clientHeight;
+    productImageContainerRef.current.style.height = `${height}px`;
+
     dispatch(showSplash())
     clickedAnimation(productImageRef.current);
 
@@ -59,7 +65,7 @@ const Pellis = ({ products }) => {
               18 carat gold plated sterling silver ring, Bespoke fit.
             </div>
           </div>
-          <div>
+          <div ref={productImageContainerRef}>
             <div className='w-full h-full' ref={productImageRef}>
               <Image src={products[1].node.images.edges[0].node.originalSrc}
                 layout="responsive"
@@ -70,8 +76,8 @@ const Pellis = ({ products }) => {
                 priority
               />
             </div>
-            <button className='button' onClick={handleClick}>View Product</button>
           </div>
+          <button className='button' onClick={handleClick}>View Product</button>
         </div>
 
         <div className='col-start-2 col-end-12 md:row-span-full md:col-start-2 md:col-end-6'>
