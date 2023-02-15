@@ -1,8 +1,8 @@
 import "../styles/globals.css";
-import {store} from "../store";
-import {Provider} from "react-redux";
+import { store } from "../store";
+import { Provider } from "react-redux";
 
-function MyApp({Component, pageProps}) {
+function MyApp({ Component, pageProps }) {
 	return (
 		<Provider store={store}>
 			<div>
@@ -29,3 +29,4 @@ export default MyApp;
 //Try to find original product images. The fade to black gradient of the spotlight is rough at the edges.
 //Add page change transition for back/forward browser event
 //SEO turn off so this fake site doesn't appear under Conor's name
+//Optimise images

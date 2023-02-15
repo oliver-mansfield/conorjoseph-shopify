@@ -1,6 +1,6 @@
 import gsap from "gsap/dist/all";
-import {useEffect, useRef} from "react";
-import {useSelector} from "react-redux";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 const Intro = () => {
 	const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -19,14 +19,14 @@ const Intro = () => {
 	}, [splashVisible]);
 
 	return (
-		<div className="p-10 lg:my-40" ref={introRef}>
+		<div className="p-6 md:p-10 lg:my-40" ref={introRef}>
 			<div className="max-w-2xl grid grid-cols sm:grid-cols-2 gap-5 mx-auto">
-				<p className="text-xl first-letter:text-7xl">
+				<p className="text-base md:text-xl first-letter:text-7xl">
 					Second Skin is the latest collection by Conor Joseph, which sees the
 					Jewellery artist pay homage to the human body and its varying
 					differences and uniqueness.
 				</p>
-				<p className="text-xl mt-10">
+				<p className="text-base md:text-xl mt-10">
 					The collection is made of 30 pieces, all made on fine gold plated
 					silver, hand crafted in London’s prestigious Hatton Garden. Like most
 					of Conor’s work, Second Skin is a dark and obscure collection, yet his

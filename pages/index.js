@@ -10,6 +10,7 @@ import ProductList from "../components/ProductList";
 import ProductShowcase from "components/home/ProductShowcase";
 import Articulus from "components/products/Articulus";
 import Pelis from "components/products/Pellis";
+import Manibus from "components/products/Manibus";
 
 export default function Home({ products }) {
 	const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -30,6 +31,7 @@ export default function Home({ products }) {
 			{/* <ProductShowcase products={products} /> */}
 			<Articulus products={products} />
 			<Pelis products={products} />
+			<Manibus products={products} />
 
 			{splashVisible ? <Splash /> : null}
 		</div>

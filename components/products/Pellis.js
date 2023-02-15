@@ -47,8 +47,10 @@ const Pellis = ({ products }) => {
 
   return (
     <div>
-      <section className='md:grid grid-cols-12 gap-4 mt-10' ref={componentRef}>
-        <div className='relative text-center row-span-full col-start-2 col-end-7'>
+      <section className='grid grid-cols-12 gap-4 mt-20' ref={componentRef}>
+        <div className='text-center col-start-2 col-end-12 
+        md:row-span-full md:col-start-7 md:col-end-12
+        lg:mt-20'>
           <div className='mx-auto max-w-xs'>
             <h2>The Pellis Ring</h2>
             <div className='text-white'>
@@ -57,7 +59,7 @@ const Pellis = ({ products }) => {
               18 carat gold plated sterling silver ring, Bespoke fit.
             </div>
           </div>
-          <div className='h-[600px]'>
+          <div>
             <div className='w-full h-full' ref={productImageRef}>
               <Image src={products[1].node.images.edges[0].node.originalSrc}
                 layout="responsive"
@@ -68,11 +70,11 @@ const Pellis = ({ products }) => {
                 priority
               />
             </div>
+            <button className='button' onClick={handleClick}>View Product</button>
           </div>
         </div>
 
-
-        <div className='row-span-full col-start-7 col-end-12'>
+        <div className='col-start-2 col-end-12 md:row-span-full md:col-start-2 md:col-end-6'>
           {/* <RevealImage imgPath='/images/articulus-model-1.jpg' height='5100' width='3000' /> */}
           <Image src="/images/pellis-model.jpg"
             layout="responsive"
