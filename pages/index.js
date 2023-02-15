@@ -7,7 +7,6 @@ import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import Header from "../components/Header";
 import ProductList from "../components/ProductList";
-import ProductShowcase from "components/home/ProductShowcase";
 import Articulus from "components/products/Articulus";
 import Pelis from "components/products/Pellis";
 import Manibus from "components/products/Manibus";
@@ -28,7 +27,7 @@ export default function Home({ products }) {
 			<Header />
 			<Intro />
 			{/* <ProductList products={products} /> */}
-			{/* <ProductShowcase products={products} /> */}
+
 			<Articulus products={products} />
 			<Pelis products={products} />
 			<Manibus products={products} />
