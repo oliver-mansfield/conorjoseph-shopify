@@ -58,10 +58,10 @@ const Pellis = ({ products }) => {
         md:row-span-full md:col-start-7 md:col-end-12
         lg:mt-20'>
           <div className='mx-auto max-w-xs'>
-            <h2>The Pellis Ring</h2>
+            <h2 className='mb-4'>The Pellis Ring</h2>
             <div className='text-white'>
-              The Pellis thumb ring rests in sync with the knuckle generating a strong and striking identity.<br />
-
+              The Pellis thumb ring rests in sync with the knuckle generating a strong and striking identity.
+              <br />
               18 carat gold plated sterling silver ring, Bespoke fit.
             </div>
           </div>

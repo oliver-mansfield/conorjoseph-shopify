@@ -57,7 +57,7 @@ const Articulus = ({ products }) => {
         <div className='text-center col-start-2 col-end-12 md:row-span-full md:col-start-2 md:col-end-7
         lg:mt-20'>
           <div className='mx-auto max-w-xs'>
-            <h2>The Articulus Ring</h2>
+            <h2 className='mb-4'>The Articulus Ring</h2>
             <div className='text-white'>This Anatomical Ring combines surreal aesthetic and technical design to create a sense of mechanicalism that reflects the dexterity and movement of the fingers.
             </div>
           </div>

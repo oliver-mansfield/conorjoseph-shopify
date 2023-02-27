@@ -1,13 +1,19 @@
 import "../styles/globals.css";
-import { store } from "../store";
+import { persistor, store } from "../store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+//TODO see if <PersistGate loading={null} persistor={persistor}> is really needed
+//There's no server side rendering, does it block rendering while cartProducts are loaded from local storage?
 
 function MyApp({ Component, pageProps }) {
 	return (
 		<Provider store={store}>
-			<div>
-				<Component {...pageProps} />;
-			</div>
+			<PersistGate loading={null} persistor={persistor}>
+				<div>
+					<Component {...pageProps} />;
+				</div>
+			</PersistGate>
 		</Provider>
 	);
 }

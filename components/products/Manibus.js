@@ -58,7 +58,7 @@ const Manibus = ({ products }) => {
         md:row-span-full md:col-start-2 md:col-end-7
         lg:mt-20'>
           <div className='mx-auto max-w-xs'>
-            <h2>The Manibus Ring</h2>
+            <h2 className='mb-4'>The Manibus Ring</h2>
             <div className='text-white'>
               Celebrating the elegant curve of the hand, The Manibus ring captures attention and imagination with its trompe l’oeil aesthetic, created using a skin textured pattern which juxtaposes the ultra moulded fit.
               <br />
@@ -66,7 +66,7 @@ const Manibus = ({ products }) => {
             </div>
           </div>
           <div ref={productImageContainerRef}>
-            <div className='w-full h-full' ref={productImageRef}>
+            <div className='cursor-pointer' ref={productImageRef}>
               <Image src={products[2].node.images.edges[0].node.originalSrc}
                 layout="responsive"
                 width="1400"
