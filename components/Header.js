@@ -8,7 +8,8 @@ const Header = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<header className="p-2 flex justify-between sticky top-0 z-50 bg-black">
+		//write a tailwind class for a white 1px border bottom
+		<header className="p-2 flex justify-between sticky top-0 z-50 backdrop-filter border-b-[1px]">
 			<Link href="/">
 				<div className="perspective-container p-4">
 					<h3 className="perspective-text">Conor Joseph</h3>

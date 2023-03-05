@@ -39,6 +39,10 @@
 	.button {
 		@apply bg-gold px-8 py-2 uppercase;
 	}
+
+	.the-articulus-ring {
+
+	}
 }
 
 body {
@@ -56,4 +60,8 @@ body {
 
 .gradient-bg-cover {
 	background: linear-gradient(45deg, #312c28 0%, #615851 100%);
+}
+
+.backdrop-filter {
+	backdrop-filter: blur(5px);
 }

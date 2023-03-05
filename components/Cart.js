@@ -1,7 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {hideCart} from "stores/cartSlice";
-import {gsap} from "gsap";
-import {useRef, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hideCart } from "stores/cartSlice";
+import { gsap } from "gsap";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import CartTotal from "./cart/CartTotal";
 import formatPrice from "lib/formatPrice";
