@@ -34,13 +34,13 @@ function Product({ productData }) {
 						quality="100"
 					/>
 				</div>
-				<div className="md:absolute z-20 w-full top-1/2">
+				<div className="z-20 w-full md:mt-[-150px]">
 					<div className="container flex items-center justify-around md:justify-start">
 						<ProductDetails productData={productData} />
 					</div>
 				</div>
 			</div>
-			<ModelsGallery productData={productData} />
+			{/* <ModelsGallery productData={productData} /> */}
 		</>
 	);
 }

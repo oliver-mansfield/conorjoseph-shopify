@@ -1,9 +1,9 @@
 import formatPrice from "lib/formatPrice";
 import AddToCartButton from "./AddToCartButton";
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap/dist/all";
 
-const ProductDetails = ({productData}) => {
+const ProductDetails = ({ productData }) => {
 	const detailsRef = useRef(null);
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ const ProductDetails = ({productData}) => {
 
 	return (
 		<div
-			className="max-w-xs p-5 bg-gradient-to-b from-brown1 to-brown2"
+			className="max-w-xs p-5 backdrop-filter-glass"
 			ref={detailsRef}
 		>
 			<h2 className="text-center mb-3">{productData.title}</h2>

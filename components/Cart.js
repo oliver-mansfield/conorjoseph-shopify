@@ -57,12 +57,13 @@ const Cart = () => {
 						className="relative bg-gradient-to-b from-brown1 to-brown2 pointer-events-auto p-10 w-[700px]	
 					"
 					>
+						<h3 className="mb-8 text-center font-sans">Your cart</h3>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
 							height="24"
 							viewBox="0 0 24 24"
-							className="absolute top-2 right-2"
+							className="absolute top-2 right-2 cursor-pointer"
 							onClick={() => {
 								handleClose();
 							}}
@@ -74,11 +75,11 @@ const Cart = () => {
 						</svg>
 						<div>
 							{cartProducts.length === 0 ? (
-								<p>You have no products in your cart.</p>
+								<p>You have no products in your basket.</p>
 							) : (
 								cartProducts.map((product, index) => {
 									return (
-										<div className="flex mb-4" key={index}>
+										<div className="flex mb-10" key={index}>
 											<div className="h-[90px] w-[120px] overflow-hidden relative border-white border-2 mr-4">
 												<div className="w-[180px] absolute left-[-25%]">
 													<Image

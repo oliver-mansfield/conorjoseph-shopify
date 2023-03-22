@@ -38,9 +38,9 @@ const ProductList = ({ products }) => {
 			gsap.timeline().to(productItemsRef.current[arrayOfIndexes[i]], {
 				opacity: 0,
 				// rotation: 5,
-				skewY: 3,
-				scale: 0.8,
-				y: 30,
+				// skewY: 3,
+				// scale: 0.8,
+				// y: 30,
 				duration: 0.5,
 				ease: "power3.inOut",
 			});
@@ -78,45 +78,42 @@ const ProductList = ({ products }) => {
 	};
 
 	return (
-		<div className="container grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-16 product-list">
+		<div className="container product-list">
 			{products.map((product, index) => (
 				<div
-					className={`min-h-[200px] sm:min-h-[250px] lg:min-h-[350px] ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
+					className={`mb-32 min-h-[200px] sm:min-h-[250px] lg:min-h-[350px] ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
 					key={product.node.id}
 					ref={(el) => {
 						productItemsRef.current.push(el);
 					}}
 				>
-					<div
-						onClick={() => {
-							handleClick(product, index);
-						}}
-						className="cursor-pointer"
-					>
-						<div>
-							<div
-								className="image-container"
-								ref={(el) => {
-									productImageRef.current.push(el);
-								}}
-							>
-								<Image
-									src={product.node.images.edges[0].node.originalSrc}
-									width="1400"
-									height="750"
-									layout="responsive"
-								// quality={80}
-								/>
-							</div>
 
-							<div
-								className="mt-[-3rem] text-center perspective-container"
-								ref={(el) => {
-									productTitleRef.current.push(el);
-								}}
-							>
-								<h2 className="perspective-text">{product.node.title}</h2>
-							</div>
+					<div>
+						<div
+							className="image-container"
+							ref={(el) => {
+								productImageRef.current.push(el);
+							}}
+						>
+							<Image
+								src={product.node.images.edges[0].node.originalSrc}
+								width="1400"
+								height="750"
+								layout="responsive"
+							// quality={80}
+							/>
+							<button className='button' onClick={() => {
+								handleClick(product, index);
+							}}>View Product</button>
+						</div>
+
+						<div
+							className="mt-[-3rem] text-center perspective-container"
+							ref={(el) => {
+								productTitleRef.current.push(el);
+							}}
+						>
+							<h2 className="perspective-text">{product.node.title}</h2>
 						</div>
 					</div>
 				</div>
