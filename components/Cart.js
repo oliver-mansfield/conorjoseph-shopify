@@ -27,9 +27,21 @@ const Cart = () => {
 			delay: 0.2,
 			ease: "power3.inOut",
 		});
+
+		//TODO is this the most effective way to handle the escape key?
+		const handleEscape = (e) => {
+			if (e.key === "Escape") {
+				handleClose();
+			}
+		};
+		document.addEventListener("keydown", handleEscape);
+		return () => {
+			document.removeEventListener("keydown", handleEscape);
+		};
 	}, []);
 
 	const handleClose = () => {
+		//TODO this overlay only shows in the <Header />
 		gsap.timeline().to(overlayRef.current, {
 			opacity: 0,
 			duration: 0.5,
@@ -50,37 +62,36 @@ const Cart = () => {
 		<>
 			<div className="fixed top-0 left-0 h-full w-full">
 				<div
-					className="relative z-20 flex justify-center items-start mt-40 h-full w-full pointer-events-none"
+					className="relative z-20 flex justify-center items-start mt-10 sm:mt-40 h-full w-full pointer-events-none"
 					ref={cartContainerRef}
 				>
 					<div
-						className="relative bg-gradient-to-b from-brown1 to-brown2 pointer-events-auto p-10 w-[700px]	
+						className="relative bg-gradient-to-b from-brown1 to-brown2 pointer-events-auto mx-4 w-[700px] p-4 sm:p-10	
 					"
 					>
-						<h3 className="mb-8 text-center font-sans">Your cart</h3>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							className="absolute top-2 right-2 cursor-pointer"
+						<h4 className="mb-8 pb-4 text-center border-b-[1px]">Your cart</h4>
+
+						<button className="absolute top-2 right-2 cursor-pointer group"
 							onClick={() => {
 								handleClose();
-							}}
-						>
-							<path
-								d="M8.25 16.8L12 13.05L15.75 16.8L16.8 15.75L13.05 12L16.8 8.25L15.75 7.2L12 10.95L8.25 7.2L7.2 8.25L10.95 12L7.2 15.75L8.25 16.8ZM12 22C10.6333 22 9.34167 21.7375 8.125 21.2125C6.90833 20.6875 5.84583 19.9708 4.9375 19.0625C4.02917 18.1542 3.3125 17.0917 2.7875 15.875C2.2625 14.6583 2 13.3667 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.02917 5.825 4.9375 4.925C5.84583 4.025 6.90833 3.3125 8.125 2.7875C9.34167 2.2625 10.6333 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3667 21.7375 14.6583 21.2125 15.875C20.6875 17.0917 19.975 18.1542 19.075 19.0625C18.175 19.9708 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20.5C14.3667 20.5 16.375 19.6708 18.025 18.0125C19.675 16.3542 20.5 14.35 20.5 12C20.5 9.63333 19.675 7.625 18.025 5.975C16.375 4.325 14.3667 3.5 12 3.5C9.65 3.5 7.64583 4.325 5.9875 5.975C4.32917 7.625 3.5 9.63333 3.5 12C3.5 14.35 4.32917 16.3542 5.9875 18.0125C7.64583 19.6708 9.65 20.5 12 20.5Z"
-								fill="white"
-							/>
-						</svg>
+							}} >
+							<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+								<path className="transition-all absolute top-0 group-hover:opacity-0" fill="white" d="m336 762.153 144-144 144 144L666.153 720l-144-144 144-144L624 389.847l-144 144-144-144L293.847 432l144 144-144 144L336 762.153Zm144.067 193.846q-78.836 0-148.204-29.92-69.369-29.92-120.682-81.21-51.314-51.291-81.247-120.629-29.933-69.337-29.933-148.173t29.92-148.204q29.92-69.369 81.21-120.682 51.291-51.314 120.629-81.247 69.337-29.933 148.173-29.933t148.204 29.92q69.369 29.92 120.682 81.21 51.314 51.291 81.247 120.629 29.933 69.337 29.933 148.173t-29.92 148.204q-29.92 69.369-81.21 120.682-51.291 51.314-120.629 81.247-69.337 29.933-148.173 29.933ZM480 896q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+							</svg>
+
+							<svg className="transition-all absolute top-0 group-hover:opacity-100 opacity-0" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+								<path className="hidden group-hover:block transition-all" fill="white" d="m336 762.153 144-144 144 144L666.153 720l-144-144 144-144L624 389.847l-144 144-144-144L293.847 432l144 144-144 144L336 762.153Zm144.067 193.846q-78.836 0-148.204-29.92-69.369-29.92-120.682-81.21-51.314-51.291-81.247-120.629-29.933-69.337-29.933-148.173t29.92-148.204q29.92-69.369 81.21-120.682 51.291-51.314 120.629-81.247 69.337-29.933 148.173-29.933t148.204 29.92q69.369 29.92 120.682 81.21 51.314 51.291 81.247 120.629 29.933 69.337 29.933 148.173t-29.92 148.204q-29.92 69.369-81.21 120.682-51.291 51.314-120.629 81.247-69.337 29.933-148.173 29.933Z" />
+							</svg>
+						</button>
+
 						<div>
 							{cartProducts.length === 0 ? (
-								<p>You have no products in your basket.</p>
+								<p>You have no products in your cart.</p>
 							) : (
 								cartProducts.map((product, index) => {
 									return (
 										<div className="flex mb-10" key={index}>
-											<div className="h-[90px] w-[120px] overflow-hidden relative border-white border-2 mr-4">
+											<div className="h-[90px] w-[120px] overflow-hidden relative border-white border-2 mr-4 hidden xs:block">
 												<div className="w-[180px] absolute left-[-25%]">
 													<Image
 														src={product.images.edges[0].node.url}
@@ -90,17 +101,17 @@ const Cart = () => {
 													/>
 												</div>
 											</div>
-											<div className="flex grow flex-col justify-between">
-												<p className="text-2xl">{product.title}</p>
 
-												<div>
+											<div className="flex grow flex-col justify-between">
+												<div className="flex justify-between items-baseline">
+													<p className="text-2xl mb-4 mr-4">{product.title}</p>
 													<p className="text-right text-xl">
 														{formatPrice(
 															product.priceRange.minVariantPrice.amount
 														)}
 													</p>
-													<QuantityControls product={product} />
 												</div>
+												<QuantityControls product={product} />
 											</div>
 										</div>
 									);
@@ -108,8 +119,9 @@ const Cart = () => {
 							)}
 						</div>
 						<CartTotal />
-
-						<button className="button">Checkout</button>
+						<div className="flex justify-center mt-10">
+							<button className="button">Checkout</button>
+						</div>
 					</div>
 				</div>
 				<div

@@ -23,16 +23,16 @@ export default MyApp;
 //TODO
 //Loading screen
 //Animate cover text better DONE
-//Set up local storage to percist cart on browser refresh
+//Set up local storage to percist cart on browser refresh DONE
 //Fade out other items better on page transition //DONE - but need to handle nav if it's half way up page
 //Get better easing value
 //Button styles
 //Finish Cart styling
 //	--Icon, Header Icon
 //Style Intro into something more interesting
-//Add correct product data in shopify
-//Style the model shots on the product page
-//Try to find original product images. The fade to black gradient of the spotlight is rough at the edges.
+//Add correct product data in shopify DONE
+//Style the model shots on the product page 
 //Add page change transition for back/forward browser event
 //SEO turn off so this fake site doesn't appear under Conor's name
 //Optimise images
+//Put content on /products route
