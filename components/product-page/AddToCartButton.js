@@ -1,20 +1,25 @@
-import {useDispatch} from "react-redux";
-import {addProductToCart} from "stores/cartSlice";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "stores/cartSlice";
+import Button from "components/elements/Button";
 
-const AddToCartButton = ({productData}) => {
+const AddToCartButton = ({ productData }) => {
 	const dispatch = useDispatch();
+
 
 	return (
 		<>
-			<button
+			{/* <button
 				className="button"
 				onClick={() => {
-					console.log(productData);
 					dispatch(addProductToCart(productData));
 				}}
 			>
 				Add to cart
-			</button>
+			</button> */}
+
+			<Button text="Add to basket" link={null} onClick={() => {
+				dispatch(addProductToCart(productData));
+			}} />
 		</>
 	);
 };

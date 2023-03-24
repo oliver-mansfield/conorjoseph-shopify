@@ -74,7 +74,8 @@ const Articulus = ({ products }) => {
               />
             </div>
           </div>
-          <button className='button' onClick={handleClick}>View Product</button>
+          {/* <button className='button' onClick={handleClick}>View Product</button> */}
+          <Button text="View Product" onClick={handleClick}>View Product</Button>
         </div>
 
         <div className='hidden md:block md:row-span-full md:col-start-7 md:col-end-9'>

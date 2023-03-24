@@ -14,7 +14,7 @@ const QuantityControls = ({ product }) => {
 				<div className="flex justify-between items-center border border-white max-w-[110px]">
 
 					<button
-						className="px-2 py-1 group hover:bg-white"
+						className="px-2 py-1 group hover:bg-white transition"
 						onClick={() => {
 							dispatch(decreaseQty(product.handle));
 						}}
@@ -30,7 +30,7 @@ const QuantityControls = ({ product }) => {
 					<span className="px-2">{product.quantity}</span>
 
 					<button
-						className="px-2 py-1 group hover:bg-white"
+						className="px-2 py-1 group hover:bg-white transition"
 						onClick={() => {
 							dispatch(increaseQty(product.handle));
 						}}
