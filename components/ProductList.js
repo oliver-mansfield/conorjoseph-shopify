@@ -5,13 +5,18 @@ import gsap from "gsap/dist/all";
 import Flip from "gsap/dist/Flip";
 import { useDispatch, useSelector } from "react-redux";
 import { showSplash, hideSplash } from "stores/appSlice";
+import Button from "components/elements/Button";
+import ModelsGallery from "./product-page/ModelsGallery";
 
 gsap.registerPlugin(Flip);
 
 const ProductList = ({ products }) => {
 	const productItemsRef = useRef([]);
+	const productImageContainerRef = useRef([]);
 	const productImageRef = useRef([]);
 	const productTitleRef = useRef([]);
+	const productButtonRef = useRef([]);
+	const modelsGalleryRef = useRef([]);
 	const router = useRouter();
 
 	// const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -20,9 +25,11 @@ const ProductList = ({ products }) => {
 	//Reset
 	useEffect(() => {
 		dispatch(hideSplash());
+		console.log(products)
 	}, []);
 
 	const handleClick = (product, index) => {
+
 		//Create an array of indexes of all the items except the one which was clicked (index)
 		const arrayOfIndexes = [];
 
@@ -46,12 +53,29 @@ const ProductList = ({ products }) => {
 			});
 		}
 
-		//Fade out clicked item title
+		//Fade out clicked item title, button and model images
+		//TODO rewrite this to animate all in one func
 		gsap.timeline().to(productTitleRef.current[index], {
 			duration: 0.1,
 			ease: "power3.inOut",
 			opacity: 0,
 		});
+
+		gsap.timeline().to(productButtonRef.current[index], {
+			duration: 0.1,
+			ease: "power3.inOut",
+			opacity: 0,
+		});
+
+		gsap.timeline().to(modelsGalleryRef.current[index], {
+			duration: 0.1,
+			ease: "power3.inOut",
+			opacity: 0,
+		});
+
+		//Prevent layout from collapsing when image is move to splash
+		const height = productImageRef.current[index].clientHeight;
+		productImageContainerRef.current[index].style.height = `${height}px`;
 
 		dispatch(showSplash());
 
@@ -60,6 +84,7 @@ const ProductList = ({ products }) => {
 		setTimeout(() => {
 			const flipState = Flip.getState(productImageRef.current[index]);
 			const splash = document.querySelector(".splash");
+			console.log(productImageRef.current[index])
 
 			splash.appendChild(productImageRef.current[index]);
 
@@ -72,51 +97,74 @@ const ProductList = ({ products }) => {
 		}, 100);
 
 		//Finally route to that page
-		setTimeout(() => {
-			router.push(`/products/${product.node.handle}`);
-		}, 750);
+		// setTimeout(() => {
+		// 	router.push(`/products/${product.node.handle}`);
+		// }, 750);
 	};
 
 	return (
-		<div className="container product-list">
+		<div className="product-list ">
 			{products.map((product, index) => (
-				<div
-					className={`mb-32 min-h-[200px] sm:min-h-[250px] lg:min-h-[350px] ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
+
+				<section
+					className={`grid grid-cols-12 gap-4 mt-20 lg:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
 					key={product.node.id}
 					ref={(el) => {
 						productItemsRef.current.push(el);
 					}}
 				>
 
-					<div>
-						<div
-							className="image-container"
-							ref={(el) => {
-								productImageRef.current.push(el);
-							}}
-						>
-							<Image
-								src={product.node.images.edges[0].node.originalSrc}
-								width="1400"
-								height="750"
-								layout="responsive"
-							// quality={80}
-							/>
-							<button className='button' onClick={() => {
-								handleClick(product, index);
-							}}>View Product</button>
-						</div>
 
+					<div className="product-details-container
+						lg:mt-20">
 						<div
-							className="mt-[-3rem] text-center perspective-container"
+							className="mt-[-3rem] text-center flex flex-col items-center"
 							ref={(el) => {
 								productTitleRef.current.push(el);
 							}}
 						>
-							<h2 className="perspective-text">{product.node.title}</h2>
+							<h2 className="perspective-text mb-2">{product.node.title}</h2>
+							<div className='text-white max-w-[300px] text-center'>{product.node.description}</div>
+						</div>
+
+						<div ref={(el) => {
+							productImageContainerRef.current.push(el);
+						}}>
+							<div
+								className="image-container"
+								ref={(el) => {
+									productImageRef.current.push(el);
+								}}
+							>
+								<Image
+									src={product.node.images.edges[0].node.originalSrc}
+									width="1400"
+									height="750"
+									layout="responsive"
+								// quality={80}
+								/>
+							</div>
+						</div>
+
+						<button ref={(el) => {
+							productButtonRef.current.push(el);
+						}}
+							className='button' onClick={() => {
+								handleClick(product, index);
+							}}>View Product</button>
+					</div>
+
+					<div className="models-gallery-outer">
+						<div className="models-gallery-inner" ref={(el) => {
+							modelsGalleryRef.current.push(el);
+						}} >
+							<ModelsGallery productData={product.node} />
 						</div>
 					</div>
-				</div>
+
+				</section>
+
+
 			))}
 		</div>
 	);
