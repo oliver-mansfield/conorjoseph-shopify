@@ -6,9 +6,6 @@ import Splash from "components/home/Splash";
 import Cover from "../components/home/Cover";
 import Intro from "../components/home/Intro";
 import Header from "../components/Header";
-import Articulus from "../components/products/Articulus";
-import Pelis from "../components/products/Pellis";
-import Manibus from "../components/products/Manibus";
 import ProductList from "components/ProductList";
 
 export default function Home({ products }) {
@@ -29,9 +26,6 @@ export default function Home({ products }) {
 
 			<ProductList products={products} />
 
-			<Articulus products={products} />
-			<Pelis products={products} />
-			<Manibus products={products} />
 
 			{splashVisible ? <Splash /> : null}
 		</div>
