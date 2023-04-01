@@ -17,9 +17,9 @@ const AddToCartButton = ({ productData }) => {
 				Add to cart
 			</button> */}
 
-			<Button text="Add to basket" link={null} onClick={() => {
+			<button className="button" onClick={() => {
 				dispatch(addProductToCart(productData));
-			}} />
+			}} >Add to cart</button>
 		</>
 	);
 };

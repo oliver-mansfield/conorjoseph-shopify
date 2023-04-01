@@ -17,6 +17,7 @@ const ProductList = ({ products }) => {
 	const productTitleRef = useRef([]);
 	const productButtonRef = useRef([]);
 	const modelsGalleryRef = useRef([]);
+	const theCollectionRef = useRef(null);
 	const router = useRouter();
 
 	// const splashVisible = useSelector((state) => state.app.splashVisible);
@@ -73,6 +74,12 @@ const ProductList = ({ products }) => {
 			opacity: 0,
 		});
 
+		gsap.timeline().to(theCollectionRef.current, {
+			duration: 0.1,
+			ease: "power3.inOut",
+			opacity: 0,
+		});
+
 		//Prevent layout from collapsing when image is move to splash
 		const height = productImageRef.current[index].clientHeight;
 		productImageContainerRef.current[index].style.height = `${height}px`;
@@ -97,76 +104,86 @@ const ProductList = ({ products }) => {
 		}, 100);
 
 		//Finally route to that page
-		// setTimeout(() => {
-		// 	router.push(`/products/${product.node.handle}`);
-		// }, 750);
+		setTimeout(() => {
+			router.push(`/products/${product.node.handle}`);
+		}, 750);
 	};
 
 	return (
-		<div className="product-list ">
-			{products.map((product, index) => (
+		<>
+			<div className="container" ref={theCollectionRef}>
+				<h3 className="text-center border-b-[1px] border-white pb-2 max-w-md mx-auto px-2">The Collection</h3>
+			</div>
+			<div className="product-list ">
+				{products.map((product, index) => (
 
-				<section
-					className={`grid grid-cols-12 gap-4 mt-20 lg:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
-					key={product.node.id}
-					ref={(el) => {
-						productItemsRef.current.push(el);
-					}}
-				>
+					<section
+						className={`grid grid-cols-12 gap-4 mt-20 lg:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
+						key={product.node.id}
+						ref={(el) => {
+							productItemsRef.current.push(el);
+						}}
+					>
 
-
-					<div className="product-details-container
+						<div className="product-details-container
 						lg:mt-20">
-						<div
-							className="mt-[-3rem] text-center flex flex-col items-center"
-							ref={(el) => {
-								productTitleRef.current.push(el);
-							}}
-						>
-							<h2 className="perspective-text mb-2">{product.node.title}</h2>
-							<div className='text-white max-w-[300px] text-center'>{product.node.description}</div>
-						</div>
-
-						<div ref={(el) => {
-							productImageContainerRef.current.push(el);
-						}}>
 							<div
-								className="image-container"
+								className="mt-[-3rem] text-center flex flex-col items-center"
 								ref={(el) => {
-									productImageRef.current.push(el);
+									productTitleRef.current.push(el);
 								}}
 							>
-								<Image
-									src={product.node.images.edges[0].node.originalSrc}
-									width="1400"
-									height="750"
-									layout="responsive"
-								// quality={80}
-								/>
+								<h2 className="perspective-text mb-2">{product.node.title}</h2>
+								<div className='text-white max-w-[300px] text-center'>{product.node.description}</div>
+							</div>
+
+							<div ref={(el) => {
+								productImageContainerRef.current.push(el);
+							}}>
+								<div
+									className="image-container cursor-pointer"
+									ref={(el) => {
+										productImageRef.current.push(el);
+									}}
+									onClick={() => {
+										handleClick(product, index);
+									}}
+
+								>
+									<Image
+										src={product.node.images.edges[0].node.originalSrc}
+										width="1400"
+										height="750"
+										layout="responsive"
+
+									// quality={80}
+									/>
+								</div>
+							</div>
+
+							<button ref={(el) => {
+								productButtonRef.current.push(el);
+							}}
+								className='button'
+								onClick={() => {
+									handleClick(product, index);
+								}}>
+								View Product
+							</button>
+						</div>
+
+						<div className="models-gallery-outer">
+							<div className="models-gallery-inner" ref={(el) => {
+								modelsGalleryRef.current.push(el);
+							}} >
+								<ModelsGallery productData={product.node} />
 							</div>
 						</div>
 
-						<button ref={(el) => {
-							productButtonRef.current.push(el);
-						}}
-							className='button' onClick={() => {
-								handleClick(product, index);
-							}}>View Product</button>
-					</div>
-
-					<div className="models-gallery-outer">
-						<div className="models-gallery-inner" ref={(el) => {
-							modelsGalleryRef.current.push(el);
-						}} >
-							<ModelsGallery productData={product.node} />
-						</div>
-					</div>
-
-				</section>
-
-
-			))}
-		</div>
+					</section>
+				))}
+			</div>
+		</>
 	);
 };
 

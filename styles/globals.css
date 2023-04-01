@@ -27,7 +27,11 @@
 	}
 
 	h3 {
-		@apply text-2xl;
+		@apply text-2xl font-normal;
+	}
+
+	h4 {
+		@apply text-xl font-normal;
 	}
 
 	p,
@@ -37,7 +41,7 @@
 	}
 
 	.button {
-		@apply bg-gold px-8 py-2 uppercase;
+		@apply bg-gold px-8 py-2 uppercase border-gold border-[1px] rounded-md hover:bg-black hover:border-gold hover:text-gold transition-all;
 	}
 }
 

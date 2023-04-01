@@ -12,6 +12,7 @@ const Cover = () => {
 	const skinRef = useRef(null);
 	const girlRef = useRef(null);
 	const guyRef = useRef(null);
+	const ctaRef = useRef(null);
 
 	useEffect(() => {
 		gsap.timeline().from(conorRef.current, {
@@ -46,6 +47,13 @@ const Cover = () => {
 			ease: "power3.inOut",
 			delay: 1.5,
 		});
+		gsap.timeline().from(ctaRef.current, {
+			opacity: 0,
+			y: "30px",
+			duration: 1,
+			ease: "power3.inOut",
+			delay: 2,
+		});
 	}, []);
 
 	//When splashVisible changes to true,
@@ -76,6 +84,10 @@ const Cover = () => {
 								<h1 ref={skinRef}>SECOND SKIN</h1>
 							</div>
 						</div>
+					</div>
+					<div className="absolute bottom-1/2 sm:bottom-1/4 md:bottom-4 w-full flex flex-col items-center" ref={ctaRef}>
+						<h4 className="text-center pb-2 max-w-md mx-auto px-2">Shop The Collection</h4>
+						<svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path fill="#fff" d="M480 954.46 213.078 687.538l31.615-31.999 212.615 213V194.078h45.384v674.461l212.615-213 31.615 31.999L480 954.46Z" /></svg>
 					</div>
 
 					<div

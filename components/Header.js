@@ -10,7 +10,7 @@ const Header = () => {
 	return (
 		<header className="p-2 flex justify-between items-center sticky top-0 z-50 backdrop-filter-glass border-b-[1px]">
 			<Link href="/">
-				<div className="perspective-container p-4">
+				<div className="perspective-container p-4 cursor-pointer">
 					<h3 className="perspective-text">Conor Joseph</h3>
 				</div>
 			</Link>
