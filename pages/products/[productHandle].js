@@ -2,7 +2,7 @@ import getProductByHandle from "lib/getProductByHandle";
 import getAllProducts from "lib/getAllProducts";
 import Image from "next/image";
 import ProductDetails from "components/product-page/ProductDetails";
-import ModelsGallery from "components/product-page/ModelsGallery";
+import ProductModelsGallery from "components/product-page/ProductModelsGallery";
 import Header from "components/Header";
 
 import { useEffect } from "react";
@@ -21,9 +21,13 @@ function Product({ productData }) {
 	}, []);
 
 	return (
-		<>
+		<main className="relative">
+
 			<Header />
-			<div className="md:relative z-10 w-full">
+			<ProductDetails productData={productData} />
+
+
+			<div className="z-10 w-full">
 				<div className="md:max-w-5xl mx-auto">
 					<Image
 						src={productData.images.edges[0].node.url}
@@ -34,14 +38,11 @@ function Product({ productData }) {
 						quality="100"
 					/>
 				</div>
-				<div className="z-20 w-full md:mt-[-150px]">
-					<div className="container flex items-center justify-around md:justify-start">
-						<ProductDetails productData={productData} />
-					</div>
-				</div>
 			</div>
-			{/* <ModelsGallery productData={productData} /> */}
-		</>
+
+			<ProductModelsGallery productData={productData} />
+
+		</main>
 	);
 }
 

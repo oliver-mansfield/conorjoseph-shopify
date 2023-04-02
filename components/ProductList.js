@@ -26,7 +26,6 @@ const ProductList = ({ products }) => {
 	//Reset
 	useEffect(() => {
 		dispatch(hideSplash());
-		console.log(products)
 	}, []);
 
 	const handleClick = (product, index) => {

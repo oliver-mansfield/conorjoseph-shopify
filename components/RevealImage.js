@@ -34,7 +34,6 @@ const RevealImage = ({ imgPath, width, height }) => {
 	}, []);
 
 	const runAnimation = () => {
-		console.log("run ok");
 		gsap.from(shapeRef.current, {
 			y: '-100%',
 			duration: 0.5,

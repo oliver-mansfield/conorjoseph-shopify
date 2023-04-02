@@ -16,18 +16,24 @@ const ProductDetails = ({ productData }) => {
 	}, []);
 
 	return (
-		<div
-			className="max-w-xs p-5 backdrop-filter-glass"
-			ref={detailsRef}
-		>
-			<h2 className="text-center mb-3">{productData.title}</h2>
-			<h3 className="text-center text-2xl mb-6">
-				{formatPrice(productData.priceRange.minVariantPrice.amount)}
-			</h3>
-			<p className="font-sansSerif">{productData.description}</p>
+		<div className="fixed bottom-32 mx-auto w-full z-10">
+			<div
+				className="p-5 backdrop-filter-glass max-w-4xl grid grid-cols-5 gap-4 mx-auto rounded-md"
+				ref={detailsRef}
+			>
+				<div className="col-start-1 col-end-3">
+					<h2 className="text-right">{productData.title}</h2>
+					<h3 className="text-right mb-6">
+						{formatPrice(productData.priceRange.minVariantPrice.amount)}
+					</h3>
+				</div>
 
-			<div className="mt-4 mx-auto">
-				<AddToCartButton productData={productData} />
+				<div className="col-start-3 col-end-6">
+					<p className="font-sansSerif">{productData.description}</p>
+					<div className="mt-8">
+						<AddToCartButton productData={productData} />
+					</div>
+				</div>
 			</div>
 		</div>
 	);

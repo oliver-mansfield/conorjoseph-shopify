@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	cartProducts: [],
@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
 			if (addedProduct) {
 				addedProduct.quantity++;
 			} else {
-				state.cartProducts.push({...action.payload, quantity: 1});
+				state.cartProducts.push({ ...action.payload, quantity: 1 });
 			}
 
 			state.cartVisible = true;
@@ -51,7 +51,6 @@ export const cartSlice = createSlice({
 				(prod) => prod.handle === action.payload
 			);
 			if (product.quantity === 1) {
-				console.log("remove");
 			} else {
 				product.quantity--;
 			}

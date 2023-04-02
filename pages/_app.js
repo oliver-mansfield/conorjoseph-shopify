@@ -27,7 +27,7 @@ export default MyApp;
 //Fade out other items better on page transition //DONE - but need to handle nav if it's half way up page
 //Get better easing value
 //Button styles
-//Finish Cart styling
+//Finish Cart styling //DONE
 //	--Icon, Header Icon
 //Style Intro into something more interesting
 //Add correct product data in shopify DONE
@@ -36,3 +36,5 @@ export default MyApp;
 //SEO turn off so this fake site doesn't appear under Conor's name
 //Optimise images
 //Put content on /products route
+//Check mobile spacing
+//Does the prod image blink when the page transitions?

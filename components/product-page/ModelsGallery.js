@@ -2,7 +2,6 @@ import Image from "next/image";
 
 const ModelsGallery = ({ productData }) => {
 	const modelImages = productData.images.edges.slice(1);
-	console.log(productData)
 	return (
 		<>
 			{modelImages.map((item, index) => {
