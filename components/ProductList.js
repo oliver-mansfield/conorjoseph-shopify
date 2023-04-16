@@ -117,7 +117,7 @@ const ProductList = ({ products }) => {
 				{products.map((product, index) => (
 
 					<section
-						className={`grid grid-cols-12 gap-4 mt-10 md:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
+						className={`grid grid-cols-12 gap-4 mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
 						key={product.node.id}
 						ref={(el) => {
 							productItemsRef.current.push(el);
