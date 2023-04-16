@@ -18,22 +18,23 @@ const ProductDetails = ({ productData }) => {
 	return (
 
 		<div
-			className="max-w-4xl grid grid-cols-5 gap-4 mx-auto rounded-md z-20 relative"
+			className="max-w-4xl grid grid-cols-5 gap-4 mx-auto px-4 rounded-md z-20 relative"
 			ref={detailsRef}
 		>
-			<div className="col-start-1 col-end-3">
-				<h2 className="text-right">{productData.title}</h2>
-				<h3 className="text-right mb-6">
+			<div className="col-start-1 col-end-6 md:col-start-1 md:col-end-3">
+				<h2 className="text-center md:text-right">{productData.title}</h2>
+				<h3 className="text-center md:text-right">
 					{formatPrice(productData.priceRange.minVariantPrice.amount)}
 				</h3>
 			</div>
 
-			<div className="col-start-3 col-end-6">
-				<p className="font-sansSerif">{productData.description}</p>
-				<div className="mt-8">
+			<div className="col-start-1 col-end-6 md:col-start-3 md:col-end-6">
+				<p className="font-sansSerif text-center md:text-left">{productData.description}</p>
+				<div className="flex justify-center md:justify-start mt-8">
 					<AddToCartButton productData={productData} />
 				</div>
 			</div>
+
 		</div>
 
 	);
