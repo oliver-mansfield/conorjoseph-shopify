@@ -25,7 +25,7 @@ function Product({ productData }) {
 
 			<Header />
 
-			<div className="z-10 w-full">
+			<div className="z-10 w-full mt-10 md:mt-20">
 				<div className="md:max-w-5xl mx-auto">
 					<Image
 						src={productData.images.edges[0].node.url}
