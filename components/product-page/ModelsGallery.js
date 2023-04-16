@@ -12,8 +12,9 @@ const ModelsGallery = ({ productData }) => {
 							// className={`item.handle + item.index`}
 							index={index}
 							layout="responsive"
-							width="3300"
-							height="5100"
+							width="800"
+							height="1236"
+							quality="90"
 						/>
 					</div>
 				);

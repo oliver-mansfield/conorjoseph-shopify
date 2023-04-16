@@ -147,15 +147,14 @@ const ProductList = ({ products }) => {
 									onClick={() => {
 										handleClick(product, index);
 									}}
-
 								>
 									<Image
 										src={product.node.images.edges[0].node.originalSrc}
 										width="1400"
 										height="750"
 										layout="responsive"
-
-									// quality={80}
+										quality="100"
+									// priority
 									/>
 								</div>
 							</div>
@@ -171,7 +170,7 @@ const ProductList = ({ products }) => {
 							</button>
 						</div>
 
-						<div className="models-gallery-outer">
+						<div className="hidden md:block models-gallery-outer">
 							<div className="models-gallery-inner" ref={(el) => {
 								modelsGalleryRef.current.push(el);
 							}} >

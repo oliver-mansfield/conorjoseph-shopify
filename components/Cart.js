@@ -60,7 +60,7 @@ const Cart = () => {
 
 	return (
 		<>
-			<div className="fixed top-0 left-0 h-full w-full">
+			<div className="fixed z-50 top-0 left-0 h-full w-full">
 				<div
 					className="relative z-20 flex justify-center items-start mt-10 sm:mt-40 h-full w-full pointer-events-none"
 					ref={cartContainerRef}
@@ -98,6 +98,7 @@ const Cart = () => {
 														width="1400"
 														height="750"
 														objectFit="cover"
+														quality="100"
 													/>
 												</div>
 											</div>

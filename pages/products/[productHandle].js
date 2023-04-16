@@ -24,8 +24,6 @@ function Product({ productData }) {
 		<main className="relative">
 
 			<Header />
-			<ProductDetails productData={productData} />
-
 
 			<div className="z-10 w-full">
 				<div className="md:max-w-5xl mx-auto">
@@ -40,6 +38,7 @@ function Product({ productData }) {
 				</div>
 			</div>
 
+			<ProductDetails productData={productData} />
 			<ProductModelsGallery productData={productData} />
 
 		</main>
