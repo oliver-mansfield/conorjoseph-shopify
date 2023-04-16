@@ -117,7 +117,7 @@ const ProductList = ({ products }) => {
 				{products.map((product, index) => (
 
 					<section
-						className={`grid grid-cols-12 gap-4 mt-20 lg:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
+						className={`grid grid-cols-12 gap-4 mt-10 md:mt-20 ${product.node.handle}`} //TODO get this arbitary media query working or define a tweak point
 						key={product.node.id}
 						ref={(el) => {
 							productItemsRef.current.push(el);
@@ -127,13 +127,13 @@ const ProductList = ({ products }) => {
 						<div className="product-details-container
 						lg:mt-20">
 							<div
-								className="mt-[-3rem] text-center flex flex-col items-center"
+								className="text-center flex flex-col items-center"
 								ref={(el) => {
 									productTitleRef.current.push(el);
 								}}
 							>
 								<h2 className="perspective-text mb-2">{product.node.title}</h2>
-								<div className='text-white max-w-[300px] text-center'>{product.node.description}</div>
+								<p className='text-white max-w-[300px] text-center font-sans hidden md:block'>{product.node.description}</p>
 							</div>
 
 							<div ref={(el) => {
