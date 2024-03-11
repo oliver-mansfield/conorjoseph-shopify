@@ -166,7 +166,7 @@ const ProductList = ({ products }) => {
 								onClick={() => {
 									handleClick(product, index);
 								}}>
-								View Product
+								View
 							</button>
 						</div>
 

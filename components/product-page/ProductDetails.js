@@ -17,9 +17,9 @@ const ProductDetails = ({ productData }) => {
 
 	return (
 
-		<div className="md:fixed bottom-4 w-full z-10 flex justify-center">
+		<div className="w-full z-10 flex justify-center md:mt-[-20rem]">
 			<div
-				className="max-w-4xl grid grid-cols-5 gap-4 px-4 rounded-md z-20 backdrop-filter-glass p-4 mx-4"
+				className="max-w-4xl grid grid-cols-5 gap-4 px-4 rounded-md z-20 p-4 mx-4"
 				ref={detailsRef}
 			>
 				<div className="col-start-1 col-end-6 md:col-start-1 md:col-end-3">
