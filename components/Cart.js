@@ -6,6 +6,7 @@ import Image from "next/image";
 import CartTotal from "./cart/CartTotal";
 import formatPrice from "lib/formatPrice";
 import QuantityControls from "./cart/QuantityControls";
+import Link from "next/link";
 
 const Cart = () => {
 	const cartProducts = useSelector((state) => state.cart.cartProducts);
@@ -62,7 +63,7 @@ const Cart = () => {
 		<>
 			<div className="fixed z-50 top-0 left-0 h-full w-full">
 				<div
-					className="relative z-20 flex justify-center items-start mt-10 sm:mt-40 h-full w-full pointer-events-none"
+					className="relative z-20 flex justify-center items-start mt-10 sm:mt-30 h-full w-full pointer-events-none"
 					ref={cartContainerRef}
 				>
 					<div
@@ -121,7 +122,9 @@ const Cart = () => {
 						</div>
 						<CartTotal />
 						<div className="flex justify-center mt-10">
-							<button className="button">Checkout</button>
+							<Link href="/checkout">
+								<button className="button">Checkout</button>
+							</Link>
 						</div>
 					</div>
 				</div>
