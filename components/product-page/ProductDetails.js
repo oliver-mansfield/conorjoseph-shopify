@@ -24,13 +24,13 @@ const ProductDetails = ({ productData }) => {
 			>
 				<div className="col-start-1 col-end-6 md:col-start-1 md:col-end-3">
 					<h2 className="text-center md:text-right">{productData.title}</h2>
-					<h3 className="text-center md:text-right">
+					<h3 className="text-center md:text-right text-gray-400">
 						{formatPrice(productData.priceRange.minVariantPrice.amount)}
 					</h3>
 				</div>
 
 				<div className="col-start-1 col-end-6 md:col-start-3 md:col-end-6">
-					<p className="font-sansSerif text-center md:text-left">{productData.description}</p>
+					<p className="font-sansSerif text-gray-400 text-center md:text-left">{productData.description}</p>
 					<div className="flex justify-center md:justify-start mt-8">
 						<AddToCartButton productData={productData} />
 					</div>

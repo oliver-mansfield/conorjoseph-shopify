@@ -133,7 +133,7 @@ const ProductList = ({ products }) => {
 								}}
 							>
 								<h2 className="perspective-text mb-2">{product.node.title}</h2>
-								<p className='text-white max-w-[300px] text-center font-sans hidden md:block'>{product.node.description}</p>
+								<p className='max-w-[300px] text-center font-sans hidden md:block text-gray-400'>{product.node.description}</p>
 							</div>
 
 							<div ref={(el) => {
