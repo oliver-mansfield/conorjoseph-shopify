@@ -18,7 +18,7 @@ export default function ProductListing({products}) {
 	);
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const products = await getAllProducts();
 
 	return {
