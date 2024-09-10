@@ -59,6 +59,21 @@ const Cart = () => {
 		}, 600);
 	};
 
+	const handleStockCheck = async () => {
+		
+		const response = await fetch("/api/stockCheck", {
+			method: "GET",
+		})
+		const data = await response.json();
+
+		console.log(data);
+
+		// const response = await fetch("/api/stockCheck");
+		// const json = await response.json();
+		// console.log(json);
+
+	}
+
 	return (
 		<>
 			<div className="fixed z-50 top-0 left-0 h-full w-full">
@@ -125,6 +140,8 @@ const Cart = () => {
 							<Link href="/checkout">
 								<button className="button">Checkout</button>
 							</Link>
+				{/* <button onClick={handleStockCheck}>Stock check</button> */}
+
 						</div>
 					</div>
 				</div>
